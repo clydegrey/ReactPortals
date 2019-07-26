@@ -1,0 +1,28 @@
+.c-alert {
+	@include t-white();
+	text-align: left;
+	position: relative;
+	padding: $nb-spacing-unit ($nb-spacing-unit * 2) $nb-spacing-unit $nb-spacing-unit;
+	border-left: 5px solid $color-accent;
+	max-width: rem-calc(380px);
+	transition: opacity 300ms ease, transform 250ms ease;
+	&__close {
+		display: block;
+		position: absolute;
+		right: ($nb-spacing-unit / 2);
+		top: ($nb-spacing-unit / 2);
+		background-color: transparent;
+		font-size: rem-calc(25px);
+		color: $color-text-dark;
+		padding: 0;
+		line-height: 0;
+		&:hover,
+		&:focus {
+			color: $color-text-medium;
+		}
+	}
+	&--animate {
+		opacity: 0;
+		transform: translateY(-1rem);
+	}
+}

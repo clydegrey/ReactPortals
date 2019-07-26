@@ -1,0 +1,19 @@
+.c-main {
+	padding-top: rem-calc($header-height);
+	flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+	&__nav {
+		flex-shrink: 0;
+	}
+	&__wrap {
+		width: 100%;
+	}
+	&__content {
+		flex-grow: 1;
+		width: 100%;
+		@include nb-respond-to('max-md') {
+			min-width: 100vw;
+		}
+	}
+}

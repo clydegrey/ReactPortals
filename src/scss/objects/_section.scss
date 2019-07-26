@@ -1,0 +1,15 @@
+.nb-o-section-md {
+  padding-top: ($nb-spacing-unit * 2);
+  padding-bottom: ($nb-spacing-unit * 2);
+  & > & {
+  	padding-top: ($nb-spacing-unit);
+	  padding-bottom: ($nb-spacing-unit);
+  }
+  @include nb-respond-to('md') {
+  	padding-top: ($nb-spacing-unit * 3);
+	  padding-bottom: ($nb-spacing-unit * 3);
+	  & + & {
+	  	padding-top: $nb-spacing-unit;
+	  }
+  }
+}

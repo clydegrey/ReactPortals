@@ -1,0 +1,176 @@
+/* Buckets section */
+
+.buckets {
+  padding: 2em 1em 1em;
+  // background: #3E454C;
+}
+
+.buckets ul {
+  @extend %no-margin-no-padding;
+}
+
+.buckets li {
+  margin-bottom: 1em;
+
+  list-style-type: none;
+}
+
+.bucket {
+  padding: 1.5em;
+}
+
+/*--------------------------------------------------------------
+If no grid support, limit width to 50em and center align
+--------------------------------------------------------------*/
+@supports not (display: grid) {
+  .grid {
+    max-width: 50em;
+    margin: 0 auto;
+  }
+}
+
+/*--------------------------------------------------------------
+Use flex to create a three-bucket layout 
+--------------------------------------------------------------*/
+@include breakpoint(laptop) {
+  // @media screen and (min-width: 700px) {
+  // @supports (display: flex) {
+
+  .buckets ul {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .buckets li {
+    width: 31%;
+  }
+
+  //   .grid.twins{
+  //   display:flex;
+  //   justify-content: flex-end;
+  //   flex-wrap: wrap;
+
+  // }
+  // .twin:first-of-type{
+  //   flex:0 1 600px;
+  // }
+
+  // .twin:last-of-type{
+  //   flex:0 1 50%;
+  // }
+
+  // .twin{
+  //   box-sizing: border-box;
+  // }
+}
+// }
+
+/*--------------------------------------------------------------
+CSS Grid layout for wider screens, when browser supports grid:
+--------------------------------------------------------------*/
+
+@include breakpoint(laptop) {
+  // @media screen and (min-width: 600px) {
+  /* Layout with CSS Grid */
+  // @supports (display: grid) {
+
+  /* Four-column layout. Two center columns have a total max width of 50em: */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr repeat(2, minmax(auto, 42.858em)) 1fr;
+    grid-template-columns: 1fr repeat(2, minmax(auto, 60rem)) 1fr;
+  }
+
+  // .left-rail-template{
+  //     padding: 0 15px 5.6rem 15px;
+  // }
+
+  .grid-4 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    display: grid;
+    grid-template-columns: 1fr repeat(4, minmax(auto, 21.429em)) 1fr;
+    grid-template-columns: 1fr repeat(4, minmax(auto, 321px)) 1fr;
+  }
+
+  /* Center items by placing them in the two center columns: */
+  .splash-content,
+  .more-content,
+  .buckets ul {
+    grid-column: 2/4;
+  }
+
+  /* Use automatic grid placement + span to let each item span two columns:*/
+  .twin,
+  .colophon aside {
+    grid-column: span 2;
+  }
+}
+
+.grid {
+  text-align: center;
+  > * {
+    text-align: initial;
+  }
+}
+.center-content {
+  max-width: 1200px;
+  width: 100%;
+  display: inline-block;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .grid {
+    display: flex;
+    justify-content: center;
+  }
+
+  .grid.twins {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .twin {
+      flex-grow: 1;
+      flex-basis: 100%;
+    }
+  }
+
+  @include breakpoint(laptop) {
+    .grid.twins {
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      .twin:first-of-type {
+        flex: 0 0 600px;
+      }
+      .twin:last-of-type {
+        flex: 0 1 50%;
+        max-width: 50%;
+        flex-basis: 50%;
+      }
+
+      .twin {
+        box-sizing: border-box;
+      }
+    }
+
+    .grid-4,
+    .grid {
+      display: flex;
+    }
+  }
+
+  //  .twin:first-of-type{
+  //   flex:0 1 600px;
+
+  // }
+
+  // .twin:last-of-type{
+  //   flex:0 1 50%;
+  // }
+
+  // .twin{
+  //   box-sizing: border-box;
+  // }
+}

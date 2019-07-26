@@ -1,0 +1,99 @@
+.center-template {
+  .header-container {
+    margin-bottom: 3rem;
+    @include breakpoint(tablet) {
+      margin-bottom: 3rem;
+    }
+  }
+  padding: 0 2.5rem;
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    margin: 0 auto;
+    max-width: 1250px;
+  }
+
+  &-center {
+    @include breakpoint(tablet) {
+      flex-basis: 600px;
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex: 0 1 600px;
+      grid-column: 3/5;
+      padding: 0;
+      padding-top: 3.3rem;
+    }
+  }
+
+  &-full {
+    flex-basis: 1200px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex: 0 1 1200px;
+    grid-column: 2/6;
+    margin-bottom: 3rem;
+
+    &.centered-content {
+      @include breakpoint(tablet) {
+        display: flex;
+        justify-content: center;
+      }
+      .centered-content__600 {
+        flex-basis: 600px;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex: 0 1 600px;
+      }
+    }
+  }
+}
+
+.gray-box {
+  width: 100%;
+  // border: 1px solid $color-border;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  border-radius: 3px;
+}
+
+.required-fields {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.site {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  /* Avoid the IE 10-11 `min-height` bug. */
+}
+
+.masthead,
+footer {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+}
+
+main {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  width: 100%;
+  flex-grow: 1;
+  flex-basis: auto;
+  /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+}
+
+.wysiwyg-content {
+  > *:last-child {
+    margin-bottom: 2.4rem;
+  }
+}
+
+// ******************
+
+// .twin {
+//   box-shadow: 0 0 1px red;
+// }

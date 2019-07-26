@@ -1,0 +1,11 @@
+.u-text {
+	&-sm {
+		@include text-sm()
+	}
+	&-lg {
+		@include text-lg()
+	}
+	&-xl {
+		@include text-xl()
+	}
+}

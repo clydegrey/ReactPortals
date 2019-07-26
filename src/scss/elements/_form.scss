@@ -1,0 +1,52 @@
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"], 
+textarea, 
+select {
+  display: block;
+  height: rem-calc($eat-field-height);
+  background-color: $color-white;
+  padding: 0 $nb-spacing-unit;
+  width: 100%;
+  border: $eat-border;
+  max-width: rem-calc(585px);
+  font-family: $font-primary;
+  &:focus {
+    box-shadow: inset 0 0 0 2px currentColor;
+  }
+}
+
+select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;      
+  appearance: none;
+  border-radius: 0;
+  &::-ms-expand {
+    display: none; 
+  }
+}
+
+textarea {
+  min-height: rem-calc(185px);
+  padding-top: ($nb-spacing-unit / 2);
+}
+
+label {
+  color: $color-text;
+  display: inline-block;
+}
+
+legend {
+	margin-bottom: ($nb-spacing-unit / 2);
+}
+
+fieldset {
+	border: none;
+  legend {
+    font-weight: bold;
+  }
+	&:not(:first-child) {
+		margin-top: ($nb-spacing-unit * 2);
+	}
+}

@@ -1,0 +1,111 @@
+%h {
+  font-display: swap;
+  font-weight: 800;
+  &:focus {
+    outline: none;
+  }
+  // &.nb-u-visually-hidden {
+  //   margin: 0 !important;
+  // }
+}
+
+h1 {
+  @extend %h;
+  font-size: rem-calc(38px);
+  line-height: unitless-calc(46, 38);
+  span {
+    display: block;
+    font-size: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+  }
+  // @include nb-respond-to('md') {
+  //   font-size: rem-calc(50px);
+  //   line-height: unitless-calc(60, 50);
+  // }
+}
+
+%h2 {
+  // @extend %h;
+  // &,
+  // .s-sidebar & {
+  //   font-size: rem-calc(22px);
+  // }
+  font-size: rem-calc(30px);
+  line-height: unitless-calc(36, 30);
+  font-family: $font-primary;
+  // color: $color-text-dark;
+  font-style: normal;
+  text-transform: none;
+  // @include nb-respond-to("md") {
+  //   font-size: rem-calc(32px);
+  //   line-height: unitless-calc(43, 32);
+  // }
+}
+h2 {
+  @extend %h2;
+}
+
+%h3 {
+  @extend %h;
+  // &,
+  // // .s-sidebar & {
+  // //   font-size: rem-calc(20px);
+  // // }
+  font-size: rem-calc(26px);
+  line-height: unitless-calc(31, 26);
+  font-weight: bold;
+  font-family: "abril-titling";
+  font-style: italic;
+  // color: $color-text-dark;
+  text-transform: none;
+  // @include nb-respond-to("md") {
+  //   font-size: rem-calc(26px);
+  //   line-height: unitless-calc(35, 26);
+  // }
+}
+h3 {
+  @extend %h3;
+}
+
+%h4 {
+  @extend %h;
+  // &,
+  // // .s-sidebar & {
+  // //   font-size: rem-calc(18px);
+  // // }
+  font-size: rem-calc(20px);
+  line-height: unitless-calc(24, 20);
+  font-family: $font-primary;
+  // text-transform: uppercase;
+  color: $color-text-dark;
+  font-style: normal;
+  // @include nb-respond-to("md") {
+  //   font-size: rem-calc(22px);
+  //   line-height: unitless-calc(32, 22);
+  // }
+}
+h4 {
+  @extend %h4;
+}
+
+%h5 {
+  @extend %h;
+  // &,
+  // .s-sidebar & {
+  //   font-size: rem-calc(1px);
+  // }
+  font-size: rem-calc(18px);
+  line-height: unitless-calc(28, 14);
+  text-transform: uppercase;
+  font-family: $font-primary;
+  color: $color-text;
+  font-style: normal;
+  // @include nb-respond-to("md") {
+  //   font-size: rem-calc(16px);
+  //   line-height: unitless-calc(28, 16);
+  // }
+}
+h5 {
+  @extend %h5;
+}

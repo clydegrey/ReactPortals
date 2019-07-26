@@ -1,0 +1,58 @@
+.c-accordion {
+	list-style: none;
+	&, li {
+		margin-left: 0;
+	}
+	&__item {
+		padding-left: 1rem;
+		position: relative;
+	}
+	&__toggle {
+		background-color: transparent;
+		font-weight: 800;
+		color: $color-text-dark;
+		text-align: left;
+		text-decoration: underline;
+		&:hover,
+		&:focus,
+		&[aria-expanded="true"] {
+			text-decoration: none;
+		}
+		&:before {
+			@include icon;
+			content: '\f0da';
+			position: absolute;
+			left: 0;
+			text-decoration: underline;
+		}
+		&[aria-expanded="true"] {
+			&:before {
+				content: '\f0d7';
+			}
+		}
+		// weird fix for an IE issue
+		&[aria-expanded="true"],
+		&[aria-expanded="false"] {
+			&:before {
+				text-decoration: none;
+			}
+		}
+	}
+	&__content {
+		overflow: hidden;  
+		&[aria-hidden="true"] {
+		  visibility: hidden;
+		  opacity: 0;
+		  height: 0;
+		  transform: translateY(-1rem);
+		  transition: visibility .2s, opacity .2s, transform .2s;
+		}
+		&[aria-hidden="false"] {
+		  visibility: visible;
+		  height: auto;
+		  opacity: 1;
+		  transform: translateY(0);
+		  transition: visibility .2s, opacity .2s, transform .2s;
+		}
+	}
+}

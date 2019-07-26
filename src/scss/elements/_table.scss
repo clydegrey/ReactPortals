@@ -1,0 +1,46 @@
+table {
+	border: 1px solid $color-gray;
+	width: 100%;
+  border-collapse: collapse;
+  min-width: rem-calc(650px);
+  caption {
+  	@extend %h3;
+  	margin-bottom: ($nb-spacing-unit / 2);
+  }
+}
+
+th, td {
+	padding: ($nb-spacing-unit / 2) $nb-spacing-unit;
+}
+
+th {
+	background-color: $color-gray;
+	text-transform: uppercase;
+	color: $color-text-light;
+	text-align: left;
+	font-weight: 800;
+	&:not(:first-child) {
+		border-left: 1px solid $color-gray-extralight;
+	}
+}
+
+thead {
+	tr {
+		background-color: $color-gray;
+	}
+}
+
+
+tbody {
+	th {
+		border-top: 1px solid $color-gray-extralight;
+	}
+	tr {
+		&:nth-of-type(odd) {
+			background-color: $color-gray-extralight;
+		}
+	}
+	td {
+		border: 1px solid $color-gray;
+	}
+}

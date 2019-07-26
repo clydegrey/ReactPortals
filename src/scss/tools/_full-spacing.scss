@@ -1,0 +1,23 @@
+@mixin full-spacing-push-soft($action, $sizes) {
+  $property: '';
+
+  @if $action == 'push' {
+    $property: 'margin';
+  } @else {
+    $property: 'padding';
+  }
+
+  @each $key, $value in $sizes {
+    .u-#{$action}-#{$key} {
+      #{$property}: $value !important;
+    }
+
+    @each $bp-key, $bp-value in $nb-breakpoints {
+      @include nb-respond-to(#{$bp-key}) {
+        .u-#{$action}-#{$key}#{$nb-breakpoint-class}#{$bp-key} {
+          #{$property}: $value !important;
+        }
+      }
+    }
+  }
+}

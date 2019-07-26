@@ -1,0 +1,23 @@
+.c-upload {
+  $upload: &;
+	label {
+    font-weight: bold;
+  }
+  input {
+    @include nb-visually-hidden;
+    &:hover,
+    &:focus {
+      + #{$upload}__button {
+        background-color: $color-bg-dark;
+        color: $color-white;
+      }
+    }
+  }
+  &__label {
+  	display: block;
+  }
+  &__button {
+  	@extend .c-button-alt;
+  	margin-top: 0.5em;
+  }
+}

@@ -1,0 +1,15 @@
+.o-inline-list {
+	@extend %list-reset;
+	li {
+		display: inline;
+		margin-right: 1em;
+	}
+	&--seperate {
+		li:not(:last-child) {
+			&:after {
+				content: '|';
+				margin-left: 1em;
+			}
+		}
+	}
+}

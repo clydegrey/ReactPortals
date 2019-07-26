@@ -1,0 +1,11 @@
+.c-search {
+	min-height: 80vh;
+	@include nb-respond-to('md') {
+		min-height: rem-calc(650px);
+	}
+	&__load {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

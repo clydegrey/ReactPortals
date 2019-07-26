@@ -1,0 +1,19 @@
+blockquote {
+  max-width: 80%;
+  &:before,
+  &:after {
+    @include text-shadow();
+  }
+  &:before {
+    margin-bottom: ($nb-spacing-unit * 2);
+  }
+  &:after {
+    margin-top: ($nb-spacing-unit * 2);
+  }
+  + cite {
+    font-style: normal;
+    &:before {
+      content: '– ';
+    }
+  }
+}

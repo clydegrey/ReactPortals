@@ -1,0 +1,405 @@
+.s-tool {
+	padding-right: 0.5rem;
+	display: block;
+	min-height: 0;
+	overflow: auto;
+	input[type="text"], 
+	input[type="email"], 
+	input[type="tel"], 
+	textarea, 
+	select {
+		display: inline-block;
+		width: auto;
+		min-width: 65px;
+		border-radius: 0;
+		padding: 0 ($nb-spacing-unit / 2);
+	}
+	select {
+	  -webkit-appearance: menulist !important;
+	  -moz-appearance: menulist !important;      
+	  appearance: menulist;
+	  border-radius: 0;
+	  &::-ms-expand {
+	    display: block; 
+	    background: transparent;
+	    border: none;
+	  }
+	}
+	@include nb-respond-to('max-sm') {
+		label {
+			display: block;
+		}
+	}
+	#tool {
+		p {
+			margin: $nb-spacing-unit auto;
+		}
+		.toolResultsRecommendation {
+			background-color: $color-bg-accent;
+			display: block;
+	    padding: $nb-spacing-unit;
+		  margin: $nb-spacing-unit auto;
+		  text-align: center;
+		  width: auto;
+		  max-width: rem-calc(780px);
+			h3,
+			h4,
+			h5 {
+				@extend %h5;
+				color: $color-text-dark;
+			}
+		}
+	}
+	#RiskAssessmentResultsContainer {
+		table,
+		table h3,
+		th {
+			color: $color-white !important;
+		}
+	}
+	#GDMquestions,
+	#SDstep1,
+	#definitions,
+	#toolsPharmQ2container,
+	#toolsPharmQ5container,
+	.remove-table-style {
+		margin-top: $nb-spacing-unit;
+		table {
+			min-width: 0;
+			border: none;
+			width: auto;
+		}
+		tr {
+			background-color: transparent;
+		}
+		td {
+			border: none;
+			padding: 0;
+	    width: auto;
+	    padding-right: 1rem;
+		}
+	}
+	input[type="radio"] {
+		margin-left: .5rem;
+	}
+	.redEmphasis {
+		font-weight: 800;
+	}
+	#A1CtargetToggle,
+	#SMBG2results_container,
+	#SMBG2patternresults_container,
+	#toolDisclaimer,
+	#SMBG2patternresults_container table,
+	.PAtoggle,
+	#tool,
+	#additionalressources,
+	.toolToggle,
+	#toolsPharmResults,
+	#RiskAssessmentCalculateButtonDefaultGrey,
+	#RiskAssessmentCalculateButton,
+	.plain-top-margin
+	 {
+		margin-top: 1rem;
+	}
+	.toolToggle {
+		@extend %h5;
+	}
+	#RiskCalculator ul {
+    margin-bottom: 1rem;
+	}
+	div[id^="RiskAssessmentQ"] {
+		margin-bottom: 2rem;
+	}
+
+	#SMBG2patternresults_container table {
+		width: 100%;
+		min-width: 0;
+		font-size: rem-calc(14px);
+		td {
+			border: 1px solid $color-gray !important;
+			text-align: center;
+			padding: 0.2em;
+		}
+	}
+	input.toolsA1CtargetQ1[disabled] {
+		background-color: $color-gray-light;
+		border-color: $color-gray;
+	}
+	.pdfBTN {
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+	.resetBTN, {
+		@extend .c-button-alt;
+	}
+	#table-of-contents .pdf, .pdfBTN, .submitBTN, .submitBTNgrey, .pushButtonSmallRed {
+		@extend .c-button-sec;
+	}
+	.submitBTNgrey {
+		opacity: 0.4;
+	}
+	#GDMcalcButton,
+	#GDMcalcButtonDefaultGrey,
+	.pushButtonLargeRed,
+	.pushButtonLargeGrey {
+		@extend .c-button;
+	}
+	#GDMcalcButtonDefaultGrey,
+	.pushButtonLargeGrey {
+		opacity: 0.4;
+	}
+	#screeningToolCalculateButton {
+		margin-top: $nb-spacing-unit;
+	}
+	.c-table {
+		max-width: 100%;
+		overflow-y: auto;
+		width: 1px; // fix for iOS iframe issue
+		min-width: 100%; // fix for iOS iframe issue
+	}
+	#tool a.info-hover {
+    background-image: url('~/static/images/information-icon-blue.png');
+    background-position: right 3px center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    padding-right: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+	}
+	#PAtoolQ6_container {
+		ul {
+			list-style: none;
+			margin-left: 0;
+		}
+		li {
+			padding-left: 0;
+		}
+	}
+	@include nb-respond-to('max-md') {
+		#global_btn {
+			display: none;
+		}
+	}
+	@include nb-respond-to('md') {
+		#mobile_btn {
+			display: none;
+		}
+	}
+	#questionnaire {
+		h2 {
+			@extend %h3;
+		}
+		h3 {
+			@extend %h5;
+		}
+	}
+	#canrisk {
+		a.btn-previous, a.btn-next {
+			@extend .c-button-sec;
+		}
+		a.btn-next-complete {
+			@extend .c-button-sec;
+		}
+		.btn {
+			text-shadow: none;
+			a {
+				@extend .c-button;
+			}
+			.btn-2,
+			.btn-1 {
+				@extend .c-button-alt;
+				transform: none;
+				&:hover,
+				&:focus {
+					transform: none;
+					background-color: $color-bg-dark;
+					border-color: $color-text-dark;
+					background-image: none;
+				}
+			}
+			.btn-1 {
+				background-color: $color-bg-dark;
+				color: $color-white;
+				&:hover,
+				&:focus {
+					background-color: $color-bg-dark;
+					color: $color-white;
+				}
+			}
+		}
+		div.calculate a {
+			@extend .c-button-alt;
+		}
+		.mobileDev {
+			margin-bottom: $nb-spacing-unit;
+		}
+		.label-danger {
+			color: $color-error;
+			background: none;
+		}
+		div.height {
+	    display: flex;
+	    align-items: center;
+	    flex-wrap: wrap;
+	    label {
+	    	width: 100%;
+	    }
+		}
+		div#blood-sugar-checkboxes,
+		div#family-checkbox-options {
+			p {
+				margin-top: ($nb-spacing-unit / 2);
+			}
+			label {
+				display: flex;
+				input[type="checkbox"] {
+					margin-right: .25rem;
+				}
+			}
+		}
+		div#family-checkbox-options {
+			h3 {
+				margin-left: -20px;
+			}
+		}
+		div#education-options {
+			padding-left: 0;
+		}
+		div.risk-complete {
+			background: $color-bg-dark;
+			color: $color-white;
+			padding: $nb-spacing-unit;
+			max-width: 400px;
+	    text-align: center;
+	    margin: 25px auto 0;
+			.title {
+				@extend %h2;
+				color: $color-white;
+				font-size: 1.375rem;
+			}
+		}
+		#btn-back,
+		#btn-print,
+		#btn-back,
+		#btn-restart {
+			margin-top:0;
+			border-radius: 0;
+			margin-bottom: $nb-spacing-unit;
+		}
+	}
+	#framework_container, #threeCoreContent_container, #fiveSupportContent_container, #samir_framework_container, #samir_fiveSupportContent_container{
+		position: relative;
+		margin-top: $nb-spacing-unit;
+	}
+
+	#threeCoreNav_container .pushButtonSmallRed, #threeCoreNav_container .pushButtonSmallGrey, #fiveSupportNav_container .pushButtonSmallRed, #fiveSupportNav_container .pushButtonSmallGrey{
+		padding: 10px 0px;
+	}
+	.navInstructions, #threeCoreNav_container, #threeCoreContent_container, #fiveSupportNav_container, #fiveSupportContent_container, #samir_fiveSupportNav_container, #samir_fiveSupportContent_container{
+		margin-top:40px;
+	}
+	#framework_container img, #samir_framework_container img{
+		margin-top:5px;
+	}
+	#samir_intro_p{margin-top:0px; margin-bottom:0px;}
+	#framework_container #assess_btn, #samir_framework_container #samir_assess_btn{
+		position: absolute;
+		left:261px;
+		top:0px;
+	}
+	#framework_container #educate_btn, #samir_framework_container #samir_educate_btn{
+		position: absolute;
+		left:498px;
+		top:108px;
+	}
+	#framework_container #collaborate_btn, #samir_framework_container #samir_collaborate_btn{
+		position: absolute;
+		left:412px;
+		top:345px;
+	}
+	#framework_container #setGoals_btn, #samir_framework_container #samir_setGoals_btn{
+		position: absolute;
+		left:98px;
+		top:345px;
+	}
+	#framework_container #followUp_btn, #samir_framework_container #samir_followUp_btn{
+		position: absolute;
+		left:7px;
+		top:108px;
+	}
+	#tabs, #samir_tabs {
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
+	#tabs li, #samir_tabs li{
+		display:inline;
+		font-size:14px;
+		padding: 5px 8px;
+		margin-left: 3px;
+		cursor:pointer;
+		cursor:hand;
+	}
+	#tabs .selected, #samir_tabs .selected{
+		background-color:#00b2eb;
+		border-radius: 15px;
+		text-decoration:none;
+		color: #fff;
+		font-size:14px;
+		padding: 5px 8px;
+		margin-left: 3px;
+	}
+	.sme-questions {
+		margin: $nb-spacing-unit 0;
+	}
+	div[id$="Q1submit"],
+	div[id$="Q2submit"],
+	div[id$="Q3submit"],
+	div[id$="Q4submit"],
+	div[id$="Q5submit"],
+	div[id$="Q6submit"],
+	div[id$="Q7submit"],
+	div[id$="Q8submit"] {
+		margin-bottom: $nb-spacing-unit;
+	}
+	div[id$="Q1container"],
+	div[id$="Q2container"],
+	div[id$="Q3container"],
+	div[id$="Q4container"],
+	div[id$="Q5container"],
+	div[id$="Q6container"],
+	div[id$="Q7container"],
+	div[id$="Q8container"], {
+		margin-top: $nb-spacing-unit;
+	}
+
+	div[id$="casestudyRESETsubmit"] {
+		@extend .c-button-alt;
+	}
+	#caseStudy .extraInfoBox {
+		border: 1px solid $color-gray;
+		text-align: center;
+		margin: $nb-spacing-unit 0;
+		padding: $nb-spacing-unit ($nb-spacing-unit / 2);
+		p {
+			text-align: left;
+		}
+	}
+	#caseStudy {
+		td {
+			min-width: 5rem;
+			padding-top: ($nb-spacing-unit / 2);
+		}
+	}
+	#caseStudy {
+		input[type="radio"] {
+			margin-right: 10px;
+		}
+	}
+	#GDMcalcQ7container td,
+	#toolsPharmQ5container td {
+		@include nb-respond-to('max-sm') {
+			display: block;
+		}
+	}
+}

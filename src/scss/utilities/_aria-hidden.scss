@@ -1,0 +1,5 @@
+.u-aria-hidden {
+	&[aria-hidden="true"] {
+		display: none;
+	}
+}

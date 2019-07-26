@@ -1,0 +1,27 @@
+.s-marketing {
+	.c-logo {
+		height: 90px;
+		img {
+			max-height: 100%;
+		}
+	}
+	.c-header {
+		position: relative;
+		box-shadow: none;
+		width: 100%;
+		padding: $nb-spacing-unit;
+		height: auto;
+		max-width: $nb-site-wrap-width;
+		margin: 0 auto;
+	}
+	.c-main {
+		padding-top: 0;
+		&__wrap {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	.c-header__action {
+		height: auto;
+	}
+}

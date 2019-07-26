@@ -1,0 +1,18 @@
+.c-back-to-top {
+	position: fixed;
+	right: 0;
+	top: 75%;
+	display: block;
+	background-color: $color-button-secondary;
+	width: rem-calc(80px);
+	height: rem-calc(50px);
+	z-index: 30;
+	transform: translateX(100%) translateX(12px);
+	transition: transform 200ms ease;
+	color: $color-text-dark;
+	font-size: rem-calc(20px);
+	&:focus,
+	&[aria-hidden="false"] {
+		transform: translateX(0);
+	}
+}

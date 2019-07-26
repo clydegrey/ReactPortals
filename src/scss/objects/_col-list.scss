@@ -1,0 +1,17 @@
+.o-col-list {
+	margin-left: 0;
+	li {
+		margin-bottom: 0;
+		margin-left: 1.8em;
+	}
+	&--2 {
+		@include nb-respond-to('md') {
+			columns: 2;
+		}
+	}
+	&--3 {
+		@include nb-respond-to('md') {
+			columns: 3;
+		}
+	}
+}

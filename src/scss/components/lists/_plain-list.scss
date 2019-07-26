@@ -1,0 +1,31 @@
+.c-plain-list {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      font-size: rem-calc(18px);
+      font-weight: 800;
+      overflow: hidden;
+      > div {
+        margin-bottom: rem-calc(20px);
+      }
+    }
+  }
+}
+
+.sticky {
+  // position: -webkit-sticky;
+  // position: sticky;
+  // top: 0;
+  position: fixed;
+
+  right: 0;
+  bottom: 5%;
+  @include breakpoint(laptop) {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: unset;
+    top: 0;
+  }
+}

@@ -1,0 +1,12 @@
+.o-media {
+  @include nb-respond-to('md') {
+	  display: flex;
+	  align-items: flex-start;
+	  &:not(:last-child) {
+		  margin: 0 0 1rem 0;
+	  }
+	  &__content {
+	  	flex-grow: 1;
+	  }
+  }
+}

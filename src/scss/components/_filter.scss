@@ -1,0 +1,21 @@
+.c-filter {
+	padding: ($nb-spacing-unit / 2) $nb-spacing-unit;
+	border-bottom: 2px solid $color-gray;
+	&:first-of-type {
+		border-top: 2px solid $color-gray;
+	}
+	&__toggle {
+		@extend %o-toggle;
+		@extend %o-toggle--right;
+		width: 100%;
+		color: $color-text;
+	}
+	&__content {
+		&[aria-hidden="true"] {
+		  visibility: hidden;
+		  opacity: 0;
+		  overflow: hidden;
+		  max-height: 0;
+		}
+	}
+}

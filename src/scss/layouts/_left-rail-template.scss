@@ -1,0 +1,129 @@
+.left-rail-template {
+  // padding: 0 15px 5.6rem 15px;
+
+  @extend %site-padding;
+
+  justify-content: center;
+  // display:block;
+
+  &-center {
+    width: 100%;
+    max-width: 1284px;
+    grid-column: 2/6;
+
+    display: block;
+    flex-wrap: nowrap;
+    @include breakpoint(laptop) {
+      display: flex;
+    }
+  }
+
+  .left-rail {
+    flex: 1 0 100%;
+    // max-width:300px;
+    grid-column: 2;
+    background: none;
+    padding: 3rem 0 0 0;
+
+    @include breakpoint(laptop) {
+      // flex: 0 1 300px;
+      max-width: 321px;
+      // padding: 3rem 20px 0 0;
+    }
+  }
+  .twin.right-content {
+    // flex:0 1 75%;
+
+    grid-column: 3/6;
+    padding: 0 0 0 0;
+    // font-size:1.6rem;
+
+    @include breakpoint(laptop) {
+      // padding: 3rem 0;
+      padding-left: 2rem;
+      max-width: 963px;
+      flex-basis: 963px;
+      flex-shrink: 10;
+      flex-grow: 10;
+    }
+    background: none;
+  }
+}
+
+.left-rail-content-multi {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 -20px;
+  .left-multi:nth-of-type(odd) {
+    margin: 0 20px;
+    flex: 0 1 43.3%;
+    flex-basis: calc(45.65% - 40px);
+  }
+  .left-multi:nth-of-type(even) {
+    flex: 0 1 47.7%;
+    flex-basis: calc(50% - 40px);
+    margin: 0 20px;
+  }
+
+  .left-single {
+    width: 100%;
+    margin: 0 20px 3rem 20px;
+    &-inner {
+      width: 55.3rem;
+    }
+  }
+  @include breakpoint(laptop) {
+    display: block;
+    margin: 0;
+    .left-multi:nth-of-type(even),
+    .left-multi:nth-of-type(odd) {
+      margin: 0 0 3rem 0;
+    }
+
+    .left-single {
+      margin: 0;
+      margin: 0 0 3rem 0;
+      &-inner {
+        width: 100%;
+      }
+    }
+  }
+
+  @include breakpoint(mobileonly) {
+    display: block;
+    margin: 0;
+    .left-multi:nth-of-type(even),
+    .left-multi:nth-of-type(odd) {
+      margin: 0;
+    }
+    .left-single {
+      margin: 0 0 3rem 0;
+      &-inner {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.left-rail-content-multi {
+  .accordion-panel button.only-mobile .icon-title {
+    @extend %no-border;
+  }
+}
+
+.right-content > .asymetrical-2columns:last-of-type {
+  .asymetrical-2columns-column:last-of-type {
+    @include breakpoint(mobileonly) {
+      // border-bottom: 1px solid $color-border;
+    }
+  }
+}
+
+.left-rail-template-center {
+  .twin.right-content {
+    > div:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+.c-tabs {
+  @include nb-respond-to('max-md') {
+    position: relative;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    overflow: hidden;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    @include nb-respond-to('md') {
+      flex-wrap: no-wrap;
+      border-bottom: 2px solid $color-bg-dark;
+    }
+  }
+  &__tab {
+    @extend %button;
+    background-color: $color-bg;
+    border-radius: 0;
+    border: 0;
+    justify-content: center;
+    margin-top: 0;
+    padding-left: rem-calc(25px);
+    padding-right: rem-calc(25px);
+    width: 100%;
+    @include nb-respond-to('max-md') {
+      background-color: $color-white;
+      border-top: 1px solid $color-gray;
+      transition: none;
+      &:last-child {
+        border-bottom: 1px solid $color-gray;
+      }
+    }
+    @include nb-respond-to('md') {
+      width: auto;
+      &:not(:last-child) {
+        border-right: 1px solid $color-white;
+      }
+    }
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 0 0px 2px darken($color-gray, 10%);
+    }
+    &[aria-selected="true"] {
+      background-color: $color-bg-dark;
+      color: $color-text-light;
+      @include nb-respond-to('max-md') {
+        border-left: 4px solid $color-bg-dark;
+        &:after {
+          content: '';
+          display: block;
+          width: 4px;
+          height: 100%;
+          left: calc(-50vw + 50%);
+          position: absolute;
+          background-color: $color-bg-dark;
+        }
+      }
+    }
+  }
+  &__panel {
+    padding: $nb-spacing-unit;
+    &[aria-hidden="true"] {
+      visibility: hidden;
+      max-height: 0;
+      padding: 0;
+      margin: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+  }
+  @media print {
+    &__list {
+      display: none;
+    }
+    &__panel {
+      padding: 0 $nb-spacing-unit !important;
+      visibility: visible !important;
+      max-height: 100% !important;
+      margin: inherit !important;
+      opacity: 1 !important;
+      overflow: auto !important;
+    }
+  }
+}

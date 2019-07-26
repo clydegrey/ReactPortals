@@ -1,0 +1,23 @@
+.c-quote {
+	border-bottom: 7px solid $color-accent;
+	@include nb-respond-to('sm') {
+		border-bottom: none;
+		padding-top: ($nb-spacing-unit * 3);
+		padding-bottom: ($nb-spacing-unit * 3);
+		padding-left: $nb-spacing-unit;
+		padding-right: $nb-spacing-unit;
+	}
+	&__image {
+		img {
+			width: 100%;
+		}
+		@include nb-respond-to('sm') {
+			@include accent-border();
+		}
+	}
+	&__content {
+		@include nb-respond-to('max-sm') {
+			padding: ($nb-spacing-unit * 2) $nb-spacing-unit;
+		}
+	}
+}

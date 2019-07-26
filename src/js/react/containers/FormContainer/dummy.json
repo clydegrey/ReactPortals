@@ -1,0 +1,111 @@
+{
+  "formName": "OPPAContactUs",
+  "fields": [
+    {
+      "fieldCodeName": "Contact",
+      "fieldDisplayName": "Please choose who to contact",
+      "fieldInput": "AccessibleSelection",
+      "mode": null,
+      "defaultValue": "test default",
+      "required": true,
+      "errorMessage": "Please choose a location to contact",
+      "explanationText": "<b>NOTE: General questions and inquiries (Member Discounts, Goodlife, Membership Cards,  Website Questions etc.) should be directed to the OPP Association Head Office and not to your local branch.  </b>",
+      "options": [
+        { "text": "1", "value": "br1@oppa.ca" },
+        { "text": "2", "value": "br2.oppa.ca" },
+        { "text": "3", "value": "br3@oppa.ca" },
+        { "text": "4", "value": "br4@oppa.ca" },
+        { "text": "5", "value": "br5@oppa.ca" },
+        { "text": "6", "value": "br6@oppa.ca" },
+        { "text": "7", "value": "br7@oppa.ca" },
+        { "text": "8", "value": "br8@oppa.ca" },
+        { "text": "9", "value": "br9@oppa.ca" },
+        { "text": "10N", "value": "br10n@oppa.ca" },
+        { "text": "10S", "value": "br10s@oppa.ca" },
+        { "text": "11", "value": "br11@oppa.ca" },
+        { "text": "12N", "value": "br12n@oppa.ca" },
+        { "text": "12S", "value": "br12s@oppa.ca" },
+        { "text": "13", "value": "br13@oppa.ca" },
+        { "text": "14", "value": "br14@oppa.ca" },
+        { "text": "15", "value": "br15@oppa.ca" },
+        { "text": "16", "value": "br16@oppa.ca" },
+        { "text": "17", "value": "br17@oppa.ca" },
+        { "text": "18", "value": "br18@oppa.ca" },
+        { "text": "Head Office", "value": "oppa@oppa.ca" }
+      ],
+      "value": null,
+      "dataType": "text"
+    },
+    {
+      "fieldCodeName": "Name",
+      "fieldDisplayName": "Name",
+      "fieldInput": "AccessibleTextBox",
+      "mode": null,
+      "defaultValue": null,
+      "required": true,
+      "errorMessage": "Please enter a name",
+      "explanationText": null,
+      "options": [],
+      "value": null,
+      "dataType": "text"
+    },
+    {
+      "fieldCodeName": "Email",
+      "fieldDisplayName": "Email",
+      "fieldInput": "AccessibleTextBox",
+      "mode": null,
+      "defaultValue": null,
+      "required": true,
+      "errorMessage": "Please enter a valid email",
+      "explanationText": null,
+      "options": [],
+      "value": null,
+      "dataType": "text"
+    },
+    {
+      "fieldCodeName": "Message",
+      "fieldDisplayName": "Message",
+      "fieldInput": "AccessibleTextBox",
+      "mode": "multipleline",
+      "defaultValue": null,
+      "required": true,
+      "errorMessage": "Please enter a message",
+      "explanationText": null,
+      "options": [],
+      "value": null,
+      "dataType": "text"
+    },
+    {
+      "fieldCodeName": "CheckBox",
+      "fieldDisplayName": "Check Box",
+      "fieldInput": "AccessibleCheckBoxList",
+      "mode": null,
+      "defaultValue": null,
+      "required": true,
+      "errorMessage": "Please check at least one box",
+      "explanationText": null,
+      "options": [
+        { "text": "option 1", "value": "option 1" },
+        { "text": "option 2", "value": "option 2" }
+      ],
+      "value": null,
+      "dataType": "text"
+    },
+    {
+      "fieldCodeName": "Radio",
+      "fieldDisplayName": "Radio",
+      "fieldInput": "AccessibleRadioList",
+      "mode": null,
+      "defaultValue": null,
+      "required": true,
+      "errorMessage": "Please select a button",
+      "explanationText": null,
+      "options": [
+        { "text": "red", "value": "red" },
+        { "text": "blue", "value": "blue" }
+      ],
+      "value": null,
+      "dataType": "text"
+    }
+  ]
+}

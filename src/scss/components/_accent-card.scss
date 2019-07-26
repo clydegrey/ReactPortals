@@ -1,0 +1,14 @@
+.c-accent-card {
+	position: relative;
+	background-color: $color-white;
+	padding: ($nb-spacing-unit * 3) $nb-spacing-unit;
+	color: $color-text;
+	margin-bottom: 10px;
+	box-shadow: 0 0 14px 0 rgba(0,0,0,0.25), 0 10px 0 $color-orange;
+	@include nb-respond-to('sm') {
+		@include accent-border();
+		padding: ($nb-spacing-unit * 3);
+		margin-bottom: 0;
+		// max-width: rem-calc(470px);
+	}
+}

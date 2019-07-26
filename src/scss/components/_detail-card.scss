@@ -1,0 +1,49 @@
+.c-detail-card {
+	$detail-card: &;
+	@include t-blue-light();
+	&--single {
+		@include nb-respond-to('sm') {
+			display: flex;
+			#{$detail-card}__image {
+				width: 40%;
+				padding-bottom: 0;
+				min-height: rem-calc(290px);
+				flex-shrink: 0;
+				img {
+			    min-height: 100%;
+			    min-width: 100%;
+			    max-width: none;
+			    width: auto;
+				}
+			}
+		}
+	}
+	&__image {
+		position: relative;
+		padding-bottom: 52.75%;
+		width: 100%;
+		overflow: hidden;
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+			display: block;
+			// width: 100%;
+
+			width: auto;
+		  height: auto;
+
+		  max-height: none;
+		  max-width: none;
+
+		  min-height: 100%;
+		  min-width: 100%;
+
+
+		}
+	}
+	&__content {
+		padding: ($nb-spacing-unit * 2);
+	}
+}

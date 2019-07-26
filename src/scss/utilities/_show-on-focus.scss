@@ -1,0 +1,15 @@
+.u-show-on-focus {
+	@include nb-visually-hidden;
+	top: 0;
+	left: 0;
+	margin: auto;
+	&:focus {
+		@extend .c-button-sec;
+    display: block;
+		clip: auto;
+    clip-path: none;
+    width: auto;
+    height: auto;
+    z-index: 100;
+	}
+}

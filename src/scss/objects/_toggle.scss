@@ -1,0 +1,38 @@
+%o-toggle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: left;
+	&[aria-controls] {
+		background-color: transparent;
+		&:after,
+		&:before {
+			@include icon;
+			font-size: rem-calc(20px);
+		}
+	}
+	&--right {
+		&[aria-expanded="true"] {
+			&:after {
+				content: '\f068';
+			}
+		}
+		&[aria-expanded="false"] {
+			&:after {
+				content: '\f067';
+			}
+		}
+	}
+	&--left {
+		&[aria-expanded="true"] {
+			&:before {
+				content: '\f068';
+			}
+		}
+		&[aria-expanded="false"] {
+			&:before {
+				content: '\f067';
+			}
+		}
+	}
+}

@@ -1,0 +1,7 @@
+:target:before {
+  display: block; 
+  content: ' '; 
+  visibility: hidden; 
+  height: calc(#{rem-calc($header-height)} + 2rem); 
+  margin-top: calc(#{rem-calc(-$header-height)} + -2rem);
+}

@@ -1,0 +1,35 @@
+.c-inline-nav {
+	@include t-blue-dark();
+	padding: ($nb-spacing-unit / 2);
+	ul {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-left: 0;
+		@include nb-respond-to('sm') {
+			flex-direction: row;
+		}
+	}
+	li {
+		margin-bottom: 0;
+		padding: 0;
+	}
+	a {
+		display: block;
+		color: $color-white;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: bold;
+		padding: ($nb-spacing-unit / 2);
+		text-align: center;
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+		@include nb-respond-to('sm') {
+			padding: 0 $nb-spacing-unit;
+		}
+	}
+}

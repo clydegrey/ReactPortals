@@ -1,0 +1,6 @@
+.c-table {
+	margin-bottom: ($nb-spacing-unit * 2);
+	@include nb-respond-to('max-md') {
+		overflow-y: auto;
+	}
+}

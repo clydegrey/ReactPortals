@@ -1,0 +1,96 @@
+.c-select-group {
+  $select-group: &;
+  display: flex;
+  margin-top: $nb-spacing-unit;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: rem-calc(500px);
+  select,
+  input {
+    height: 100%;
+    border: none;
+    color: $color-text-dark;
+    font-weight: 800;
+  }
+  select {
+    text-transform: uppercase;
+    padding: ($nb-spacing-unit / 2) ($nb-spacing-unit * 2) ($nb-spacing-unit / 2) $nb-spacing-unit;
+  }
+  label {
+    @include nb-visually-hidden;
+  }
+  .s-sidebar &,
+  &--advanced {
+    #{$select-group}__wrapper {
+      width: 100%;
+    }
+    #{$select-group}__button {
+      margin-top: $nb-spacing-unit;
+      &, button {
+        width: 100%;
+      }
+    }
+    // #{$select-group}__select {
+    //   height: 100%;
+    // }
+  }
+  &__wrapper {
+    display: flex;
+    @include nb-respond-to('max-md') {
+      width: 100%;
+    }
+  }
+  &__button {
+    @include nb-respond-to('max-md') {
+      margin-top: $nb-spacing-unit;
+      &, button {
+        width: 100%;
+      }
+    }
+  }
+  &__select,
+  &__input {
+    margin-top: 0 !important;
+    border-right: 1px solid $color-bg-dark;
+    height: rem-calc(55px);
+    min-height: rem-calc(55px);
+    flex-grow: 1;
+    @include nb-respond-to('md') {
+      height: 100%;
+    }
+  }
+  &__select {
+    flex-shrink: 0;
+  }
+  &__dollar {
+    position: relative;
+    input {
+      padding-left: 1.5rem;
+      transform-origin: left;
+    }
+    &:before {
+      content: '$';
+      position: absolute;
+      font-weight: 900;
+      color: $color-text-dark;
+      left: ($nb-spacing-unit / 2);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    &[aria-hidden="true"] {
+      display: none;
+    }
+    &[aria-hidden="false"] {
+      input {
+        animation: scaleX .2s ease-out;
+      }
+    }
+  }
+}
+
+@keyframes scaleX {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}

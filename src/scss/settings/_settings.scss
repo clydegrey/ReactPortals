@@ -1,0 +1,160 @@
+//-- Nebula Overrides --
+$nb-namespace: "nb-";
+$nb-site-wrap-width: 75rem;
+$nb-spacing-unit: 1.25rem; // 20px;
+$nb-offset-fractions: (
+  "1/12": 1/12,
+  "2/12": 2/12,
+  "3/12": 3/12,
+  "4/12": 4/12,
+  "5/12": 5/12,
+  "6/12": 6/12,
+  "7/12": 7/12,
+  "8/12": 8/12,
+  "9/12": 9/12,
+  "10/12": 10/12,
+  "11/12": 11/12
+);
+$nb-breakpoints: (
+  sm: 720px,
+  md: 960px,
+  lg: 1200px,
+  xl: 1980px
+);
+$nb-push-sizes: (
+  xs: (
+    $nb-spacing-unit / 2
+  ),
+  sm: (
+    $nb-spacing-unit
+  ),
+  md: (
+    $nb-spacing-unit * 2
+  ),
+  lg: (
+    $nb-spacing-unit * 3
+  ),
+  xl: (
+    $nb-spacing-unit * 4
+  ),
+  xxl: (
+    $nb-spacing-unit * 5
+  )
+);
+
+$nb-soft-sizes: (
+  xs: (
+    $nb-spacing-unit / 2
+  ),
+  sm: (
+    $nb-spacing-unit
+  ),
+  md: (
+    $nb-spacing-unit * 2
+  ),
+  lg: (
+    $nb-spacing-unit * 3
+  ),
+  xl: (
+    $nb-spacing-unit * 4
+  ),
+  xxl: (
+    $nb-spacing-unit * 5
+  )
+);
+
+//-- Color palette --
+$color-blue: #00b2eb;
+$color-blue-dark: #1e3268;
+$color-blue-light: #e5f7fd;
+
+$color-orange: #ff8200;
+$color-yellow: #ffc72c;
+
+$color-gray: #979797;
+$color-gray-dark: #414141;
+$color-gray-light: #dedede;
+$color-gray-extralight: #f2f2f2;
+
+$color-white: #ffffff;
+
+//-- Color settings --
+$color-bg: $color-gray-extralight;
+$color-bg-dark: var(--dark-theme-color, $color-blue-dark);
+$color-bg-accent: var(--light-theme-color, $color-blue-light);
+
+$color-gradient: var(--dark-theme-color--lightened, #0e6ca2);
+
+$color-button: var(--dark-theme-color, $color-blue-dark);
+$color-button-secondary: var(--medium-theme-color, $color-blue);
+
+$color-text: $color-gray-dark;
+$color-text-light: $color-white;
+$color-text-medium: var(--medium-theme-color, $color-blue);
+$color-text-dark: var(--dark-theme-color, $color-blue-dark);
+
+$color-primary: var(--dark-theme-color, $color-blue-dark);
+$color-accent: $color-orange;
+$color-highlight: var(--medium-theme-color, $color-yellow);
+
+$color-error: #c00000;
+
+//-- Fonts --
+$font-primary: "open-sans";
+$font-seconday: "abril-titling";
+$font-icon: "Font Awesome 5 Free";
+
+//-- Padding --
+
+//-- Size --
+@mixin text-xs() {
+  font-size: rem-calc(12px);
+  line-height: unitless-calc(22, 12);
+}
+
+@mixin text-sm() {
+  font-size: rem-calc(14px);
+  line-height: unitless-calc(20, 14);
+}
+
+@mixin text-md() {
+  font-size: rem-calc(16px);
+  line-height: unitless-calc(26, 16);
+}
+
+@mixin text-lg() {
+  font-size: rem-calc(18px);
+  line-height: unitless-calc(28, 18);
+}
+
+@mixin text-xl() {
+  font-size: rem-calc(25px);
+  line-height: unitless-calc(34, 25);
+}
+
+// -- Header/Nav --
+$header-height: 55px;
+$header-nav-width: 225px;
+
+// -- Forms --
+$eat-error-color: $color-error;
+$eat-checkbox-size: 20px;
+$eat-border: 1px solid $color-gray-dark;
+$eat-border-focus: 0.0625rem solid $color-blue-dark;
+$eat-field-height: 52px;
+
+// BOX_SIZING RESET
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+}

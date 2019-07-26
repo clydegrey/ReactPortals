@@ -1,0 +1,116 @@
+.c-header {
+	position: fixed;
+	box-shadow: 8px 0px 0 0 #FFFFFF, 0 0 14px 0 rgba(0, 0, 0, 0.25);
+
+	z-index: 50;
+	background: white;
+	display: flex;
+	justify-content: space-between;
+	height: rem-calc($header-height);
+	&__block {
+		display: flex;
+		align-items: center;
+	}
+	&__action {
+		height: 100%;
+		margin-top: 0;
+		&--button {
+			@include nb-respond-to('max-sm') {
+				font-size: rem-calc(14px);
+				padding: 1rem;
+			}
+		}
+	}
+	&__toggle {
+		@include text-sm();
+		padding: 0 ($nb-spacing-unit / 2);
+		display: flex;
+		background-color: $color-white;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		font-weight: 800;
+		min-width: rem-calc(62px);
+		text-align: center;
+		&:hover,
+		&:focus {
+			background-color: $color-bg-dark;
+			color: $color-white;
+		}
+		&--nav {
+			background-color: $color-gray-extralight;
+			margin-right: $nb-spacing-unit;
+			@include nb-respond-to('md') {
+				padding: 0 $nb-spacing-unit;
+				justify-content: space-between;
+				box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.25);
+				margin-right: ($nb-spacing-unit * 2);
+				width: rem-calc(145px);
+				transition: width 200ms ease-in-out;
+				&[aria-expanded="true"] {
+					width: rem-calc($header-nav-width);
+				}
+			}
+		}
+		&--search {
+			color: $color-text-dark;
+			&:after {
+				@include icon;
+				content: '\f002';
+				font-size: rem-calc(25px);
+			}
+			&[aria-expanded="true"] {
+				background-color: $color-bg-dark;
+				color: $color-white;
+				&:after {
+					content: '\f00d';
+				}
+			}
+			@include nb-respond-to('md') {
+				display: none;
+			}
+		}
+	}
+	&__search {
+		&, form, input[type="text"] {
+			height: 100%;
+		}
+		input[type="text"] {
+			border: none;
+			@include nb-respond-to('md') {
+				border-left: 1px solid $color-gray;
+			}
+		}
+		@include nb-respond-to('max-md') {
+	    position: absolute;
+	    left: 0;
+	    top: 100%;
+	    width: 100%;
+	    z-index: -1;
+			&[aria-hidden="true"] {
+			  visibility: hidden;
+			  opacity: 0;
+			  height: 0;
+			  transform: translateY(-0.5rem);
+			  transition: visibility .1s, opacity .1s, transform .1s;
+			}
+			&[aria-hidden="false"] {
+		    border-top: 1px solid $color-bg-dark;
+			  visibility: visible;
+			  height: auto;
+			  opacity: 1;
+			  transform: translateY(0);
+			  transition: visibility .1s, opacity .1s, transform .1s;
+		    &:after {
+		    	content: '';
+		    	display: block;
+		    	width: 100vw;
+		    	height: 100vh;
+		    	background: #414141;
+		    	opacity: 0.75;
+		    }
+			}
+		}
+		
+	}
+}

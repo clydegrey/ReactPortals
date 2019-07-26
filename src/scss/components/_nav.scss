@@ -1,0 +1,152 @@
+.c-nav {
+	padding: 0 0 ($nb-spacing-unit * 2);
+	box-shadow: 0 10px 14px 0 rgba(0,0,0,0.25);
+	z-index: 10;
+	overflow: hidden;
+	width: 100vw;
+	&--load {
+		&,
+		*,
+		+ .c-main__content {
+			transition: none !important;
+		}
+	}
+	&[aria-hidden="true"] {
+	  margin-left: -100vw;
+	  visibility: hidden;
+	  transition: visibility 0s, margin 200ms;
+	  @include nb-respond-to('max-md') {
+		  + .c-main__content {
+		  	transition: visibility;
+		  	transition-delay: 0ms;
+		  	visibility: visible;
+		  }
+	  }
+	}
+	&[aria-hidden="false"] {
+	  margin-left: 0;
+	  visibility: visible;
+	  transition: visibility 0s, margin 200ms;
+	  @include nb-respond-to('max-md') {
+		  + .c-main__content {
+		  	transition: visibility;
+		  	transition-delay: 200ms;
+		  	visibility: hidden;
+		  }
+	  }
+	}
+	@include nb-respond-to('md') {
+		width: rem-calc($header-nav-width);
+		&[aria-hidden="true"] {
+		  margin-left: rem-calc(-225px);
+		}
+	}
+	&__toggle {
+		&-icon {
+			&:after {
+				@include icon;
+				content: '\f0c9';
+				font-size: rem-calc(25px);
+			}
+			[aria-expanded="true"] & {
+				&:after {
+					content: '\f00d';
+				}
+			}
+		}
+		&-text {
+			@include nb-respond-to('max-md') {
+				@include nb-visually-hidden;
+			}
+		}
+	}
+	&__list {
+		@extend %list-reset;
+		list-style: none;
+		margin-top: 0;
+		li {
+			margin-bottom: 0;
+		}
+	}
+	&__group {
+		position: fixed;
+		top: rem-calc($header-height);
+		width: 100%;
+		background-color: white;
+		z-index: 110;
+		height: calc(100vh - #{rem-calc($header-height)});
+		overflow-y: scroll;
+		@include nb-respond-to('md') {
+			width: rem-calc($header-nav-width);
+			border-top: 1px solid $color-bg-dark;
+	  }
+		&[aria-hidden="false"] {
+			transform: translateX(0);
+		  visibility: visible;
+		  opacity: 1;
+		  transition: visibility 0s, opacity 200ms, transform 400ms;  
+		  @include nb-respond-to('max-md') {
+				border-top: 1px solid $color-bg-dark;
+		  }
+		}
+		&[aria-hidden="true"] {
+			height: 0;
+			overflow: hidden;
+			transform: translateX(-1rem);
+		  visibility: hidden;
+		  opacity: 0;
+		  transition: visibility 0s 400ms, opacity 200ms, transform 400ms;
+		}
+	}
+	&__heading {
+		@extend %h5;
+		padding: ($nb-spacing-unit / 2) $nb-spacing-unit;
+		margin-top: 0;
+	}
+	&__item {
+		$nav__item: &;
+		&--primary {
+			a {
+				font-weight: 800;
+				color: $color-text-dark;
+			}
+			+ #{$nav__item}:not(#{$nav__item}--primary) {
+				border-top: 1px solid $color-gray;
+			}
+		}
+	}
+	&__back,
+	&__link {
+		@include text-sm();
+		display: flex;
+		padding: $nb-spacing-unit;
+		&:hover,
+		&:focus {
+			background-color: $color-bg-dark;
+			color: $color-white;
+		}
+	}
+	&__back {
+		@include text-sm();
+		width: 100%;
+		background-color: transparent;
+		text-align: left;
+		&:before {
+			@include icon;
+			content: '\f053';
+			margin-right: 1em;
+		}
+	}
+	&__link {
+		color: $color-gray-dark;
+		justify-content: space-between;
+		text-decoration: none;
+		transition: all 200ms ease;
+		&[aria-controls] {
+			&:after {
+				@include icon;
+				content: '\f054';
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+h1 + * {
+	margin-top: rem-calc(30px);
+}
+
+h2 + *,
+p + p,
+* + ol,
+* + ul,
+* + %button {
+	margin-top: $nb-spacing-unit;
+}
+
+h3 + *,
+h4 + * 
+h5 + *  {
+	margin-top: ($nb-spacing-unit / 2);
+}
+
+* + h2,
+* + h3,
+* + h4,
+* + h5 {
+	margin-top: ($nb-spacing-unit * 2);
+}
+
+hr + h2,
+hr + h3,
+hr + h4,
+hr + h5 {
+	margin-top: 1em;
+}
+
+.nb-u-visually-hidden + * {
+	margin-top: auto;
+}
+
+p,
+h2,
+h3,
+h4,
+h5 {
+	max-width: rem-calc(900px);
+}

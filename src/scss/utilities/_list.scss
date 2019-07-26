@@ -1,0 +1,11 @@
+.u-list {
+	&-reset {
+		@extend %list-reset;
+		li:not(:last-child) {
+			margin-bottom: 0;
+		}
+	}
+	&-bare {
+		list-style: none;
+	}
+}

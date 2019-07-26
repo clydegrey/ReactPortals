@@ -1,0 +1,7 @@
+@mixin t-blue-light() {
+	background-color: $color-bg-accent;
+}
+
+.t-blue-light {
+	@include t-blue-light();
+}

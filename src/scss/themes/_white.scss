@@ -1,0 +1,16 @@
+@mixin t-white() {
+	background-color: $color-white;
+	&, p, %h2, %h3, %h4, %h5 {
+		color: $color-text;
+	}
+	a {
+		color: $color-text-dark;
+	}
+	.c-form__field select {
+		border: 1px solid $color-gray;
+	}
+}
+
+.t-white {
+	@include t-white();
+}

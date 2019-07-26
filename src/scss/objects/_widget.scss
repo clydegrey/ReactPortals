@@ -1,0 +1,14 @@
+.o-widget {
+	.s-sidebar & {
+		&:not(:last-child) {
+			margin-bottom: 2.5rem;
+		}
+		.nb-o-grid__item {
+			width: 100%;
+		}
+		.nb-o-site-wrap--padding {
+			padding-left: ($nb-spacing-unit * 2);
+			padding-right: ($nb-spacing-unit * 2);
+		}
+	}
+}

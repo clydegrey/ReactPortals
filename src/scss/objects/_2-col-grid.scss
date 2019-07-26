@@ -1,0 +1,21 @@
+.o-2-col-grid {
+	> div {
+		margin-top: $nb-spacing-unit;
+		&:first-child {
+			margin-top: 0;
+		}
+		@include nb-respond-to('md') {
+			width: 50%;
+			margin-top: ($nb-spacing-unit * 2);
+			&:nth-child(2) {
+				margin-top: 0;
+			}
+			.s-sidebar & {
+				&:first-child,
+				&:nth-child(2) {
+					margin-top: $nb-spacing-unit;
+				}
+			}
+		}
+	}
+}

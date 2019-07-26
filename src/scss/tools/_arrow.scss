@@ -1,0 +1,32 @@
+%arrow {
+	position: relative;
+	display: inline-block;
+	&:before {
+		@include icon;
+		display: inline-block;
+		position: absolute;
+		color: currentColor;
+	}
+	&--left {
+		padding-left: 1.5em;
+		&:before {
+			left: 0;
+		}
+	}
+	&--right {
+		padding-right: 1.5em;
+		&:before {
+			right: 0;
+		}
+	}
+	&--previous {
+		&:before {
+			content: '\f060';
+		}		
+	}
+	&--next {
+		&:before {
+			content: '\f061';
+		}		
+	}
+}

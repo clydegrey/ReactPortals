@@ -1,0 +1,10 @@
+.c-logo {
+	svg {
+		@include nb-respond-to('max-sm') {
+			margin: 0 auto;
+			header & {
+				max-width: rem-calc(75px);
+			}
+		}
+	}
+}

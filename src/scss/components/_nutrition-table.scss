@@ -1,0 +1,44 @@
+.c-nutrition-table {
+	@include t-blue-light();
+	padding: ($nb-spacing-unit * 2);
+	table {
+		min-width: 0;
+		border: none;
+	}
+	caption {
+		 @extend %h2;
+		 text-align: left;
+		 border-bottom: 5px solid $color-gray;
+		 span {
+			 	display: block;
+		 		border-top: 2px solid $color-gray;
+		 		font-weight: normal;
+		 		font-size: 1rem;
+		 		color: $color-text;
+		 		padding-top: ($nb-spacing-unit / 2);
+		 		margin: ($nb-spacing-unit / 2) 0;
+		 }
+	}
+	th, td {
+		padding: ($nb-spacing-unit / 2) 0;
+		border: none;
+		+ td,
+		+ th {
+			text-align: right;
+		}
+	}
+	th {
+		background-color: transparent;
+		color: $color-text;
+		text-transform: none;
+	}
+	td {
+		@include text-sm();
+	}
+	tr {
+		background-color: transparent !important;
+		&:not(:first-of-type) {
+			border-top: 1px solid $color-gray;
+		}
+	}
+}

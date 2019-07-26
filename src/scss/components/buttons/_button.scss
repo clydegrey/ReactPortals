@@ -1,0 +1,96 @@
+%button {
+  // @include text-sm();
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: rem-calc(13px) rem-calc(18px) rem-calc(15px) rem-calc(18px);
+  border-radius: rem-calc(3px);
+  // color: $color-text-dark;
+  transition: background-color 0.2s ease;
+}
+
+.c-button {
+  @extend %button;
+  background: #890c58;
+  color: white;
+  // // @include text-md();
+  // position: relative;
+  // border: none;
+  // // background-color: $color-bg-dark;
+  // padding-left: rem-calc(25px);
+  // padding-right: rem-calc(25px);
+  // color: $color-text-light;
+  // box-shadow: rem-calc(-4px) rem-calc(-4px) 0 0px $color-button-secondary;
+
+  // transform: translate(rem-calc(4px), rem-calc(4px));
+
+  // transform-style: preserve-3d;
+  // transition: background-color .2s ease, transform 240ms cubic-bezier(0.175, 0.885, 0.320, 1.275), box-shadow 240ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  // &:hover,
+  // &:focus {
+  // 	transform: translate3d(0, 0, 0);
+  // 	box-shadow: 0 0 0 0 $color-button-secondary;
+  &.has-icon {
+    &.has-icon__left {
+      i {
+        margin-right: rem-calc(15px);
+      }
+    }
+  }
+}
+
+// .c-button-sec {
+// 	@extend %button;
+// 	background-color: $color-button-secondary;
+// 	&:hover,
+// 	&:focus {
+// 		background-color: $color-bg-dark;
+// 		color: $color-text-light;
+// 		.t-blue-dark & {
+// 			box-shadow: inset 0 0 0 1px $color-button-secondary;
+// 		}
+// 	}
+// }
+
+// .c-button-alt {
+// 	@extend %button;
+// 	background-color: transparent;
+// 	box-shadow: inset 0 0 0 rem-calc(1px) $color-bg-dark;
+// 	&:hover,
+// 	&:focus {
+// 		background-color: $color-bg-dark;
+// 		color: $color-text-light;
+// 	}
+// }
+
+// .c-button-arrow {
+// 	@extend %button;
+// 	@extend %arrow;
+// 	@extend %arrow--left;
+// 	@extend %arrow--next;
+// 	background-color: $color-white;
+// 	width: 100%;
+// 	padding-left: 2.8em;
+// 	&:before {
+// 		left: rem-calc(18.5px);
+// 	}
+// 	&:hover,
+// 	&:focus {
+// 		background-color: $color-bg-dark;
+// 		color: $color-text-light
+// 	}
+// }
+
+// .c-button-accent {
+// 	@extend %button;
+// 	@include text-md();
+// 	background-color: $color-highlight;
+// 	padding-left: rem-calc(25px);
+// 	padding-right: rem-calc(25px);
+// 	&:hover,
+// 	&:focus {
+// 		color: $color-white;
+// 		background-color: $color-bg-dark;
+// 	}
+// }

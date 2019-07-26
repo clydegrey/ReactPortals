@@ -1,0 +1,33 @@
+.c-media {
+	margin: ($nb-spacing-unit * 2)auto;
+	&__item {
+		display: block;
+		width: 100%;
+	}
+	&__caption {
+		@include t-blue-dark();
+		padding: $nb-spacing-unit ($nb-spacing-unit * 2);
+		text-transform: uppercase;
+		div {
+			+ div {
+				border-top: 2px solid $color-white;
+				padding-top: $nb-spacing-unit;
+				margin-top: $nb-spacing-unit;
+			}
+		}
+		@include nb-respond-to('sm') {
+			display: flex;
+			justify-content: space-between;
+			text-align: center;
+			div {
+				flex-grow: 1;
+				+ div {
+					border-left: 2px solid $color-white;
+					padding-top: 0;
+					margin-top: 0;
+					border-top: none;
+				}
+			}
+		}
+	}
+}

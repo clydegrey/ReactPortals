@@ -1,0 +1,33 @@
+@mixin text-shadow() {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 80%;
+  margin: $nb-spacing-unit 0;
+  background: linear-gradient(to right, $color-text-medium 0%, $color-text-medium 25%, rgba(0,176,235,0.45) 40%, rgba(0,176,235,0) 100%)
+}
+
+@mixin accent-border() {
+	top: rem-calc(10px);
+	left: rem-calc(10px);
+	margin-right: rem-calc(10px);
+	box-shadow: none;
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		display: block;
+		top: rem-calc(-10px);
+		left: rem-calc(-10px);
+	}
+	&:before {
+		width: 100%;
+		height: rem-calc(10px);
+		background: $color-accent;
+	}
+	&:after {
+		width: rem-calc(10px);
+		height: 100%;
+		background: linear-gradient(0deg, rgba(255,255,255,0) 0%, $color-accent 100%);
+	}
+}

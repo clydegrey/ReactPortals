@@ -1,0 +1,35 @@
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fade-out 200ms forwards;
+}
+
+@keyframes fade-out-up {
+  0% {
+    opacity: 1;
+    margin-bottom: 0;
+  }
+  50% {
+    opacity: 0;
+    margin-bottom: -40px;
+  }
+  100% {
+    opacity: 0;
+    margin-bottom: -80px;
+  }
+}
+
+.fade-out {
+  animation: fade-out 200ms forwards;
+}
+
+.fade-out-up {
+  animation: fade-out-up 200ms forwards;
+}

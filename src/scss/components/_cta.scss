@@ -1,0 +1,62 @@
+.c-cta {
+	$cta: &;
+	padding: ($nb-spacing-unit * 2);
+	&__image {
+		+ #{$cta}__content {
+			text-align: left;
+		}
+	}
+	&__content {
+		text-align: center;
+		p, h2, h3, h4, h5 {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	&__button {
+		.t-blue-light & {
+			@extend .c-button;
+		}
+		.t-blue-dark & {
+			@extend .c-button-sec;
+		}
+	}
+	@include nb-respond-to('md') {
+		padding: ($nb-spacing-unit * 3);
+		&__wrapper {
+			display: flex;
+			max-width: calc(#{$nb-site-wrap-width} - ((1 / 12 * 100) * 1%));
+			margin: 0 auto;
+			align-items: center;
+			justify-content: center;
+			padding-left: $nb-spacing-unit;
+			padding-right: $nb-spacing-unit;
+		}
+		&__image {
+			width: 45%;
+			margin-right: $nb-spacing-unit;
+		}
+		&__content {
+			flex-grow: 1;
+		}
+	}
+	.s-sidebar & {
+		margin-left: auto;
+		margin-right: auto;
+		padding: ($nb-spacing-unit * 2);
+		&:not(:last-child) {
+			margin-bottom: ($nb-spacing-unit * 2);
+		}
+		#{$cta}__image {
+			margin-right: 0;
+			width: 100%;
+		}
+		#{$cta}__content {
+			text-align: left !important;
+		}
+		#{$cta}__wrapper {
+			display: block;
+			padding: 0;
+		}
+	}
+}

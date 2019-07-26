@@ -1,0 +1,22 @@
+@mixin t-grey() {
+	background-color: $color-bg;
+}
+
+.t-grey {
+	@include t-grey();
+	&--overflow {
+		position: relative;
+		background-color: transparent;
+		&:before {
+	    content: '';
+	    display: block;
+	    background-color: #F2F2F2;
+	    width: 100vw;
+	    height: 100%;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    margin-left: calc(-50vw + 50%);
+		}
+	}
+}
