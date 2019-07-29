@@ -1,0 +1,34 @@
+[
+  {
+    "FilterCodeName": "Type",
+    "FilterDisplayName": "Type",
+    "FilterItems": [
+      {
+        "Name": "Hospitals & Medical Centers",
+        "Value": "hospitals"
+      },
+      {
+        "Name": "Health and Wellness",
+        "Value": "wellness"
+      },
+      {
+        "Name": "Pharmacy",
+        "Value": "pharmacy"
+      }
+    ]
+  },
+  {
+    "FilterCodeName": "Services",
+    "FilterDisplayName": "Specialty",
+    "FilterItems": [
+      {
+        "Name": "Family Medicine",
+        "Value": "5ece8dfb-4a93-46cd-bc06-0e324dd1c1e7"
+      },
+      {
+        "Name": "Pulmonary Disease",
+        "Value": "bf6d8655-6894-43f8-a463-0dd7742ba9a4"
+      }
+    ]
+  }
+]

@@ -1,14 +1,50 @@
 import React from "react";
+import styled from "@emotion/styled";
+
+const Card = styled.div`
+  display: flex;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 20px;
+  .media {
+    width: 200px;
+    flex: 0 0 200px;
+    padding: 8px;
+    img {
+      max-width: 100%;
+    }
+  }
+  .text {
+    padding: 20px 9px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+  }
+  .buttons {
+    padding: 25px;
+    width: 210px;
+    box-shadow: 0 0 10px red;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    a {
+      background: purple;
+      padding: 13px 26px;
+      color: #fff;
+      margin-bottom: 7px;
+      display: block;
+      text-align: center;
+    }
+  }
+`;
 
 const CardHasImage = props => {
-  const summary = props.Su;
   return (
-    <div>
-      <div>
+    <Card>
+      <div className="media">
         {" "}
         <img src={props.Image} alt="" />
       </div>
-      <div>
+      <div className="text">
         <h3>{props.Title}</h3>
         <div>
           <span>
@@ -19,11 +55,17 @@ const CardHasImage = props => {
         </div>
         <a href="{props.Link1Url}">Get Directions</a>
       </div>
-      <div>
-        <a href="tel:{props.PrimaryButtonUrl}">{props.PrimaryButtonText}</a>
-        <a href="tel:{props.SecondaryButtonUrl}">{props.SecondaryButtonText}</a>
+      <div className="buttons">
+        <div>
+          <a href="tel:{props.PrimaryButtonUrl}">{props.PrimaryButtonText}</a>
+        </div>
+        <div>
+          <a href="tel:{props.SecondaryButtonUrl}">
+            {props.SecondaryButtonText}
+          </a>
+        </div>
       </div>
-    </div>
+    </Card>
   );
 
   // Address: "135b7311-d7e3-45da-966a-cef4a0174e84";

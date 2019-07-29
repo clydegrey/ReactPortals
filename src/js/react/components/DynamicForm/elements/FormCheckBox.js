@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "@emotion/styled";
-import NestedControl from "./NestedControl";
 
 const FieldSet = styled.fieldset`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   label {
     margin-right: 2rem;
     display: inline-block;
-    margin-top: 1.1rem;
+    margin-bottom: 1.1rem;
     cursor: pointer;
+    user-select: none;
   }
   input {
     width: 0;
@@ -17,10 +20,10 @@ const FieldSet = styled.fieldset`
   }
   svg {
     margin-right: 0.6rem;
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
     display: inline-block;
-    border: 1px solid #e2e2e2;
+    border: 1px solid ${props => props.theme.color.uiPrimary};
     vertical-align: top;
     border-radius: 3px;
     transition: all 50ms;
@@ -30,11 +33,10 @@ const FieldSet = styled.fieldset`
   }
   input:checked:hover,
   input:checked {
-    box-shadow: 0 0 10px green;
   }
   input:checked + svg {
-    border-color: #03539d;
-    background: #03539d;
+    border-color: ${props => props.theme.color.uiPrimary};
+    background: ${props => props.theme.color.uiPrimary};
     transition-delay: 0.21s;
     .check-stroke {
       stroke-width: 7;
@@ -44,7 +46,7 @@ const FieldSet = styled.fieldset`
     }
   }
   .check-stroke {
-    stroke: #03539d;
+    stroke: ${props => props.theme.color.uiPrimary};
     fill: none;
     stroke-linecap: round;
     stroke-dasharray: 100% 200%;
@@ -58,19 +60,17 @@ const FieldSet = styled.fieldset`
 `;
 
 const FormCheckBox = ({
-  options,
   value,
-  onChangeHandler,
   fieldCodeName,
-  explanationText,
-  errorMessage,
-  hasErrors,
-  fieldDisplayName
+  onChangeHandler,
+  options,
+  legend,
+  hasErrors
 }) => {
-  const optionTags = options.map(({ value: cbValue, text }) => {
+  const optionTags = options.map(({ Value: cbValue, Name: text }) => {
     let checkedController = false;
-    if (value && typeof value === "string") {
-      checkedController = new Set(value.split("|")).has(cbValue);
+    if (value && "has" in value) {
+      checkedController = value.has(cbValue);
     }
     return (
       <label htmlFor={cbValue} key={cbValue}>
@@ -109,7 +109,7 @@ const FormCheckBox = ({
     //   )}
     // </NestedControl>
     <FieldSet>
-      <legend>{fieldDisplayName}</legend>
+      <legend>{legend}</legend>
       {optionTags}
     </FieldSet>
   );

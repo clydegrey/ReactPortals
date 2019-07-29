@@ -1,13 +1,23 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { ThemeProvider } from "emotion-theming";
+import LeeHealthTheme from "../../themes/LeeHealthTheme";
 import RemoteSearchBox from "../../components/RemoteSearchBox";
 import RemoteFilters from "../../components/RemoteFilters";
 import SearchBox from "../../components/SearchBox";
+import DetailsSummary from "../../components/DetailsSummary";
 // import DynamicForm from "../../components/DynamicForm";
 // import FormCheckBox from "../../components/DynamicForm/elements/FormCheckBox";
 import CardHasImage from "../../components/CardHasImage";
+import FormCheckBox from "../../components/DynamicForm/elements/FormCheckBox";
+import useWindowSize from "../../hooks/useWindowSize";
+import ContainedButtons from "../../components/MaterialUI/ContainedButtons";
+import GoogleMap from "../../components/GoogleMap";
+import ClearFilters from "../../components/ClearFilters";
+import FilterGroups from "../../components/FilterGroups";
 import axios from "axios";
 
 const LocationSearchContainer = ({ filterapi, searchapi }) => {
+  const [view, setView] = useState("list");
   const [searchTerm, setSearchTerm] = useState("");
   const [locations, setLocations] = useState([]);
   const [filters, setFilters] = useState([]);
@@ -20,6 +30,8 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
   const [clientLocation, setClientLocation] = useState("");
   const [errorGeoLocation, setErrorGeolocation] = useState("");
   const [geoEnabled, setGeoEnabled] = useState(false);
+
+  const size = useWindowSize();
 
   const onChangeHandler = e => {
     const value = e.target.value;
@@ -36,37 +48,25 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
   }, [searchUrl]);
 
   useEffect(() => {
-    navigator.permissions.query({ name: "geolocation" }).then(res => {
-      if (res && res.state) {
-        setGeoEnabled(() => res.state !== "denied");
-      }
-    });
+    if (navigator && navigator.permissions && navigator.permissions.query) {
+      navigator.permissions.query({ name: "geolocation" }).then(res => {
+        if (res && res.state) {
+          setGeoEnabled(() => res.state !== "denied");
+        }
+      });
+    }
     getFilters();
   }, []);
 
   useEffect(() => {
     buildSearchUrl();
-    // let params = [];
-    // const keyNames = Object.keys(activeFilters);
-    // keyNames.forEach(key => {
-    //   const filterTerms = [...activeFilters[key]].join(",");
-    //   filterTerms.length && params.push(`${key}=${filterTerms}`);
-    // });
-    // let updatedUrl = `${searchapi}?${params.join("&")}`;
-    // if (clientLocation) {
-    //   updatedUrl = `${updatedUrl}&${clientLocation}`;
-    // }
-    // if (searchTerm) {
-    //   updatedUrl = `${updatedUrl}&keywords="${searchTerm}"`;
-    // }
-    // setSearchUrl(() => {
-    //   return updatedUrl;
-    // });
   }, [activeFilters, clientLocation]);
 
   const checkHandler = (e, FilterCodeName) => {
     const checked = e.target.checked;
     const val = e.target.value;
+    console.log(e.target);
+    console.log(checked, "--", val);
     setActiveFilters(prevState => {
       let set = prevState[FilterCodeName] || new Set();
       if (checked) {
@@ -79,57 +79,47 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
     });
   };
 
+  const clearHandler = e => {
+    const value = e.target.value;
+    setActiveFilters(prev => {
+      delete prev[value];
+      const updated = Object.assign({}, prev);
+      return updated;
+    });
+  };
+
   const getFilters = async () => {
     try {
-      const res = await axios.get(filterapi);
-
+      // const res = await axios.get(filterapi);
+      const res = await axios.get("/filters.json");
       const filters = res.data;
-
       // console.log(filters);
-
       setFilters(() => filters);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const createFilterGroups = () => {
-    const onChangeHandler = () => {};
-    return filters.map(({ FilterCodeName, FilterDisplayName, FilterItems }) => {
-      return (
-        <div key={FilterCodeName}>
-          <details>
-            <summary>{FilterDisplayName}</summary>
-            <fieldset>
-              <legend>{FilterDisplayName}</legend>
-              {/* <FormCheckBox
-              options={FilterItems}
-              value={""}
-              onChangeHandler={onChangeHandler}
-              fieldDisplayName={FilterDisplayName}
-            /> */}
-              {/* options, value, onChangeHandler, fieldCodeName, explanationText,
-            errorMessage, hasErrors, fieldDisplayName */}
-
-              {FilterItems.map(item => (
-                <Fragment key={item.Name + item.Value}>
-                  {/* <span>{`${item.Name}${item.Value}`}</span> */}
-                  <input
-                    type="checkbox"
-                    value={item.Value}
-                    onChange={e => {
-                      checkHandler(e, FilterCodeName);
-                    }}
-                  />
-                  {item.Name} <h2>{`${item.Name}${item.Value}`}</h2>
-                </Fragment>
-              ))}
-            </fieldset>
-          </details>
-        </div>
-      );
-    });
-  };
+  // const createFilterGroups = () => {
+  //   return filters.map(({ FilterCodeName, FilterDisplayName, FilterItems }) => {
+  //     return (
+  //       <DetailsSummary
+  //         border={true}
+  //         padding={true}
+  //         key={FilterCodeName}
+  //         summary={FilterDisplayName}
+  //       >
+  //         <FormCheckBox
+  //           fieldCodeName={FilterCodeName}
+  //           onChangeHandler={checkHandler}
+  //           options={FilterItems}
+  //           legend={FilterDisplayName}
+  //           value={activeFilters[FilterCodeName]}
+  //         />
+  //       </DetailsSummary>
+  //     );
+  //   });
+  // };
 
   const buildSearchUrl = () => {
     let params = [];
@@ -292,51 +282,93 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
   // console.log(locations);
   // console.log("************");
 
+  const placeholder = <span>filter your search</span>;
+
   return (
-    <div>
-      {/* <p>Searched Term {searchTerm}</p>
+    <ThemeProvider theme={LeeHealthTheme}>
+      <div>
+        <pre>{JSON.stringify(activeFilters)}</pre>
+        {/* <p>Searched Term {searchTerm}</p>
       <h1>{searchUrl}</h1>
       <p></p> */}
-      <RemoteSearchBox>
-        <form onSubmit={onSubmitHandler}>
-          <SearchBox value={searchTerm} onChange={onChangeHandler} />
-          <button type="submit">submit</button>
-        </form>
-      </RemoteSearchBox>
-
-      <RemoteFilters>
-        <form onSubmit={updateLocationOptions}>
-          <div>
-            <h3>See doctors in your area:</h3>
-            <div>
-              <span>Within</span>
-              <select onChange={e => setRadius(e.target.value)}>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-              <span>miles of</span>
-              <input value={zipcode} onChange={handleZipInput} type="text" />
-              <button type="submit">go</button>
+        <RemoteSearchBox>
+          <form onSubmit={onSubmitHandler}>
+            <SearchBox value={searchTerm} onChange={onChangeHandler} />
+          </form>
+        </RemoteSearchBox>
+        <RemoteFilters>
+          <DetailsSummary
+            isButton={true}
+            openat={1024}
+            disableat={1024}
+            windowWidth={size.width}
+            summary={placeholder}
+          >
+            <form onSubmit={updateLocationOptions}>
               <div>
-                {geoLocationButtonUI()}
-                {/* {errorGeoLocation ? (
+                <h3>See doctors in your area:</h3>
+                <div>
+                  <span>Within</span>
+                  <select onChange={e => setRadius(e.target.value)}>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  <span>miles of</span>
+                  <input
+                    value={zipcode}
+                    onChange={handleZipInput}
+                    type="text"
+                  />
+                  <button type="submit">go</button>
+                  <div>
+                    {geoLocationButtonUI()}
+                    {/* {errorGeoLocation ? (
                 <div>{errorGeoLocation}</div>
               ) : (
                 <button type="button" onClick={populateZipFromGeo}>
                   use my current location
                 </button>
               )} */}
+                  </div>
+                </div>
               </div>
-            </div>
+              {/* {filters.length ? createFilterGroups() : null} */}
+              <FilterGroups
+                checkHandler={checkHandler}
+                activeFilters={activeFilters}
+                filters={filters}
+              />
+            </form>
+          </DetailsSummary>
+        </RemoteFilters>
+        {/* <pre>{locations.item ? "true" : "false"}</pre> */}
+        <div>
+          <ClearFilters
+            clearHandler={clearHandler}
+            activeFilters={activeFilters}
+          />
+          <button onClick={() => setView("map")} type="button">
+            Map
+          </button>
+          <button onClick={() => setView("list")} type="button">
+            List
+          </button>
+        </div>
+        {view === "list" &&
+          locations.Items &&
+          locations.Items.length &&
+          getLocationsUI()}
+
+        {view === "map" ? (
+          <div style={{ width: "100%", height: "750px", position: "relative" }}>
+            <GoogleMap />{" "}
           </div>
-          {filters.length ? createFilterGroups() : null}
-        </form>
-      </RemoteFilters>
-      {/* <pre>{locations.item ? "true" : "false"}</pre> */}
-      {locations.Items && locations.Items.length && getLocationsUI()}
-      <pre>{JSON.stringify(locations)}</pre>
-    </div>
+        ) : null}
+
+        <ContainedButtons />
+      </div>
+    </ThemeProvider>
   );
 };
 

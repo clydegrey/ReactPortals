@@ -2,12 +2,15 @@
   // $banner: &;
   position: relative;
   text-align: center;
-  min-height: rem-calc(75px);
+  min-height: rem-calc(200px);
   // background: linear-gradient(0deg, $color-gradient 0%, $color-bg-dark 100%);
   // color: $color-text-light;
   display: flex;
   justify-content: center;
   align-items: center;
+  h1 {
+    color: #fff;
+  }
   // padding: ($nb-spacing-unit * 3);
   // &:after {
   // 	content: '';

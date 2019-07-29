@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { ThemeProvider } from "emotion-theming";
-import FormContainerTheme from "./FormContainerTheme";
+import LeeHealthTheme from "../../themes/LeeHealthTheme";
 import DynamicForm from "../../components/DynamicForm";
 // import idb from "idb";
 import { openDB, deleteDB, wrap, unwrap } from "idb";
@@ -176,7 +176,7 @@ const FormContainer = ({ frmcode, frmalt }) => {
   };
 
   return (
-    <ThemeProvider theme={FormContainerTheme}>
+    <ThemeProvider theme={LeeHealthTheme}>
       <div className="gray-box">
         <div>
           <DynamicForm
