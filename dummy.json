@@ -19,7 +19,11 @@
       "SecondaryButtonUrl": "/find-a-location/golisano-children’s-hospital-of-southwest-florida",
       "SecondaryButtonText": "View Details",
       "Fee": null,
-      "Rating": null
+      "Rating": null,
+      "Position": {
+        "Lat": "26.507851",
+        "Lng": "-81.917747"
+      }
     },
     {
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.6281597%2c-81.8742340&markers=color%3ared%7csize%3amid%7c26.6281597%2c-81.8742340&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
@@ -38,7 +42,11 @@
       "SecondaryButtonUrl": "/find-a-location/lee-memorial-hospital-1",
       "SecondaryButtonText": "View Details",
       "Fee": null,
-      "Rating": null
+      "Rating": null,
+      "Position": {
+        "Lat": "26.600830",
+        "Lng": "-81.871730"
+      }
     },
     {
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.6281597%2c-81.8742340&markers=color%3ared%7csize%3amid%7c26.6281597%2c-81.8742340&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",

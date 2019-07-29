@@ -15,6 +15,7 @@ import GoogleMap from "../../components/GoogleMap";
 import ClearFilters from "../../components/ClearFilters";
 import FilterGroups from "../../components/FilterGroups";
 import axios from "axios";
+import ToggleLocationView from "../../components/ToggleLocationView";
 
 const LocationSearchContainer = ({ filterapi, searchapi }) => {
   const [view, setView] = useState("list");
@@ -81,6 +82,7 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
 
   const clearHandler = e => {
     const value = e.target.value;
+    console.log(value);
     setActiveFilters(prev => {
       delete prev[value];
       const updated = Object.assign({}, prev);
@@ -287,10 +289,6 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
   return (
     <ThemeProvider theme={LeeHealthTheme}>
       <div>
-        <pre>{JSON.stringify(activeFilters)}</pre>
-        {/* <p>Searched Term {searchTerm}</p>
-      <h1>{searchUrl}</h1>
-      <p></p> */}
         <RemoteSearchBox>
           <form onSubmit={onSubmitHandler}>
             <SearchBox value={searchTerm} onChange={onChangeHandler} />
@@ -348,12 +346,7 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
             clearHandler={clearHandler}
             activeFilters={activeFilters}
           />
-          <button onClick={() => setView("map")} type="button">
-            Map
-          </button>
-          <button onClick={() => setView("list")} type="button">
-            List
-          </button>
+          <ToggleLocationView onClickHandler={setView} />
         </div>
         {view === "list" &&
           locations.Items &&
@@ -362,7 +355,7 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
 
         {view === "map" ? (
           <div style={{ width: "100%", height: "750px", position: "relative" }}>
-            <GoogleMap />{" "}
+            <GoogleMap markers={locations.Items} />{" "}
           </div>
         ) : null}
 

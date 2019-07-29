@@ -22,7 +22,6 @@ const Card = styled.div`
   .buttons {
     padding: 25px;
     width: 210px;
-    box-shadow: 0 0 10px red;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -49,21 +48,25 @@ const CardHasImage = props => {
         <div>
           <span>
             {props.Summary.map((text, i) => (
-              <span key={i}>{text}</span>
+              <div key={i}>{text}</div>
             ))}
           </span>
         </div>
         <a href="{props.Link1Url}">Get Directions</a>
       </div>
       <div className="buttons">
-        <div>
-          <a href="tel:{props.PrimaryButtonUrl}">{props.PrimaryButtonText}</a>
-        </div>
-        <div>
-          <a href="tel:{props.SecondaryButtonUrl}">
-            {props.SecondaryButtonText}
-          </a>
-        </div>
+        {props.PrimaryButtonText && (
+          <div>
+            <a href="tel:{props.PrimaryButtonUrl}">{props.PrimaryButtonText}</a>
+          </div>
+        )}
+        {props.SecondaryButtonText && (
+          <div>
+            <a href="tel:{props.SecondaryButtonUrl}">
+              {props.SecondaryButtonText}
+            </a>
+          </div>
+        )}
       </div>
     </Card>
   );

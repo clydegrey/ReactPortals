@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
+import MarkerUI from "./MarkerUI";
 
 const mapStyles = {
   width: "100%",
@@ -36,19 +37,43 @@ export class GoogleMap extends Component {
     }
   };
 
+  getUI = props => {
+    const filterMarkers = this.props.markers.filter(
+      marker => marker.Position && marker.Position.Lat
+    );
+    const markersArr = filterMarkers.map(marker => (
+      <Marker
+        key={marker.Title + marker.Position.Lat}
+        onClick={this.onMarkerClick}
+        title={marker.Title}
+        name={marker.Title}
+        position={{
+          lat: parseFloat(marker.Position.Lat),
+          lng: parseFloat(marker.Position.Lng)
+        }}
+      />
+    ));
+    return markersArr;
+  };
+
   render() {
     return (
       <Map
         google={this.props.google}
         zoom={14}
         style={mapStyles}
-        // initialCenter={{ lat: -1.2884, lng: 36.8233 }}
+        initialCenter={{ lat: 26.507851, lng: -81.917747 }}
       >
+        {this.getUI()}
+        {/* <MarkerUI
+          onMarkerClick={this.onMarkerClick}
+          markers={this.props.markers}
+        /> */}
         {/* <Marker
           onClick={this.onMarkerClick}
           name={"Kenyatta International Convention Centre"}
         /> */}
-        <Marker
+        {/* <Marker
           onClick={this.onMarkerClick}
           title={"The marker`s title will appear as a tooltip."}
           name={"SOMA"}
@@ -58,7 +83,20 @@ export class GoogleMap extends Component {
           onClick={this.onMarkerClick}
           name={"Dolores park"}
           position={{ lat: 37.759703, lng: -122.428093 }}
-        />
+        /> */}
+        {/* <Marker
+          onClick={this.onMarkerClick}
+          name={"Dolores park"}
+          position={{ lat: 37.759703, lng: -122.428093 }}
+        /> */}
+        {/* <Marker
+          onMarkerClick={this.onMarkerClick}
+          markers={this.props.markers}
+        /> */}
+        {/* <Marker
+          name={"Dolores park"}
+          position={{ lat: 37.759703, lng: -122.428093 }}
+        /> */}
 
         {/* <Marker
           onClick={this.onMarkerClick}
