@@ -2,9 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const Card = styled.div`
-  display: flex;
-  border: 1px solid #dbdbdb;
-  margin-bottom: 20px;
+  max-width: 300px;
+  padding-left: 8px;
+
   .media {
     width: 200px;
     flex: 0 0 200px;
@@ -14,33 +14,48 @@ const Card = styled.div`
     }
   }
   .text {
-    padding: 20px 9px;
+    padding: 0;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
+    margin-bottom: 20px;
   }
   .buttons {
-    padding: 25px;
-    width: 235px;
+    /* padding: 25px; */
+    /* width: 235px; */
     flex-shrink: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
+    /* margin: 0 -5.5px; */
+    max-width: 100%;
+    overflow: hidden;
+    div {
+      margin-bottom: 5px;
+    }
     a {
-      padding: 13px 26px;
+      padding: 13px 22px;
       margin-bottom: 7px;
       text-align: center;
       text-decoration: none;
+      margin: 0 11px 0 0;
+      display: inline-block;
+      /* &:last-of-type {
+        margin-right: 0;
+      } */
+    }
+    div:last-child a {
+      margin-right: 0;
     }
   }
 `;
 
-const CardHasImage = props => {
+const InfoCardUI = props => {
   return (
     <Card>
-      <div className="media">
+      {/* <div className="media">
         {" "}
         <img src={props.Image} alt="" />
-      </div>
+      </div> */}
       <div className="text">
         <h3>{props.Title}</h3>
         <div>
@@ -56,7 +71,7 @@ const CardHasImage = props => {
         {props.PrimaryButtonText && (
           <div>
             <a
-              className="c-button c-button__full"
+              className="c-button c-button__has-icon-l"
               href="tel:{props.PrimaryButtonUrl}"
             >
               {props.PrimaryButtonText}
@@ -66,8 +81,8 @@ const CardHasImage = props => {
         {props.SecondaryButtonText && (
           <div>
             <a
-              className="c-button c-button__full c-button__secondary"
-              href="tel:{props.SecondaryButtonUrl}"
+              className="c-button  c-button__secondary"
+              href="{props.SecondaryButtonUrl}"
             >
               {props.SecondaryButtonText}
             </a>
@@ -96,4 +111,4 @@ const CardHasImage = props => {
   // Title: "Golisano Children’s Hospital of Southwest Florida";
 };
 
-export default CardHasImage;
+export default InfoCardUI;

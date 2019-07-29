@@ -14,6 +14,7 @@ import ContainedButtons from "../../components/MaterialUI/ContainedButtons";
 import GoogleMap from "../../components/GoogleMap";
 import ClearFilters from "../../components/ClearFilters";
 import FilterGroups from "../../components/FilterGroups";
+import ZipcodeUI from "../../components/ZipcodeUI";
 import axios from "axios";
 import ToggleLocationView from "../../components/ToggleLocationView";
 
@@ -21,6 +22,7 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
   const [view, setView] = useState("list");
   const [searchTerm, setSearchTerm] = useState("");
   const [locations, setLocations] = useState([]);
+
   const [filters, setFilters] = useState([]);
   const [activeFilters, setActiveFilters] = useState({});
   const [searchUrl, setSearchUrl] = useState(searchapi);
@@ -92,8 +94,8 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
 
   const getFilters = async () => {
     try {
-      // const res = await axios.get(filterapi);
-      const res = await axios.get("/filters.json");
+      const res = await axios.get(filterapi);
+      // const res = await axios.get("/filters.json");
       const filters = res.data;
       // console.log(filters);
       setFilters(() => filters);
@@ -130,13 +132,16 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
       const filterTerms = [...activeFilters[key]].join(",");
       filterTerms.length && params.push(`${key}=${filterTerms}`);
     });
+    clientLocation && params.push(clientLocation);
+    searchTerm && params.push(`keywords="${searchTerm}"`);
     let updatedUrl = `${searchapi}?${params.join("&")}`;
-    if (clientLocation) {
-      updatedUrl = `${updatedUrl}&${clientLocation}`;
-    }
-    if (searchTerm) {
-      updatedUrl = `${updatedUrl}&keywords="${searchTerm}"`;
-    }
+    // if (clientLocation) {
+    //   updatedUrl = `${updatedUrl}&${clientLocation}`;
+    // }
+
+    // if (searchTerm) {
+    //   updatedUrl = ;
+    // }
     setSearchUrl(() => {
       return updatedUrl;
     });
@@ -144,12 +149,15 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
 
   const getLocations = async () => {
     try {
-      // const res = await axios.get(searchUrl);
+      const res = await axios.get(searchUrl);
 
-      const res = await axios.get("/dummy.json");
+      // const res = await axios.get("/dummy.json");
 
       console.log(res);
       const locations = res.data;
+      console.log("---------");
+      console.log(locations);
+      console.log("---------");
       setLocations(() => locations);
     } catch (error) {
       console.log(error);
@@ -236,24 +244,25 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
 
   const populateZipFromGeo = () => {
     if (geoLocation) {
+      console.log(geoLocation);
       setZipcode(geoLocation);
     } else {
       postalCodeLookup();
     }
   };
 
-  const geoLocationButtonUI = () => {
-    if (!geoEnabled) {
-      return null;
-    }
-    return errorGeoLocation ? (
-      <div>{errorGeoLocation}</div>
-    ) : (
-      <button type="button" onClick={populateZipFromGeo}>
-        use my current location
-      </button>
-    );
-  };
+  // const geoLocationButtonUI = () => {
+  //   if (!geoEnabled) {
+  //     return null;
+  //   }
+  //   return errorGeoLocation ? (
+  //     <div>{errorGeoLocation}</div>
+  //   ) : (
+  //     <button type="button" onClick={populateZipFromGeo}>
+  //       use my current location
+  //     </button>
+  //   );
+  // };
 
   const handleZipInput = e => {
     const val = parseInt(e.target.value.trim());
@@ -302,7 +311,7 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
             windowWidth={size.width}
             summary={placeholder}
           >
-            <form onSubmit={updateLocationOptions}>
+            {/* <form onSubmit={updateLocationOptions}>
               <div>
                 <h3>See doctors in your area:</h3>
                 <div>
@@ -328,25 +337,42 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
                   use my current location
                 </button>
               )} */}
-                  </div>
+            {/* </div>
                 </div>
-              </div>
-              {/* {filters.length ? createFilterGroups() : null} */}
-              <FilterGroups
-                checkHandler={checkHandler}
-                activeFilters={activeFilters}
-                filters={filters}
-              />
-            </form>
+              </div> */}
+
+            <ZipcodeUI
+              errorGeoLocation={errorGeoLocation}
+              geoEnabled={geoEnabled}
+              updateLocationOptions={updateLocationOptions}
+              handleZipInput={handleZipInput}
+              zipcode={zipcode}
+              populateZipFromGeo={populateZipFromGeo}
+              setRadius={setRadius}
+            />
+            {/* {filters.length ? createFilterGroups() : null} */}
+            <FilterGroups
+              checkHandler={checkHandler}
+              activeFilters={activeFilters}
+              filters={filters}
+            />
+            {/* </form> */}
           </DetailsSummary>
         </RemoteFilters>
         {/* <pre>{locations.item ? "true" : "false"}</pre> */}
         <div>
+          {locations.Items && locations.Items.length && (
+            <div>
+              Showing{" "}
+              <strong>{`${locations.Items.length} of ${locations.NumOfResults}`}</strong>{" "}
+              Locations
+            </div>
+          )}
           <ClearFilters
             clearHandler={clearHandler}
             activeFilters={activeFilters}
           />
-          <ToggleLocationView onClickHandler={setView} />
+          <ToggleLocationView view={view} onClickHandler={setView} />
         </div>
         {view === "list" &&
           locations.Items &&
@@ -358,8 +384,6 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
             <GoogleMap markers={locations.Items} />{" "}
           </div>
         ) : null}
-
-        <ContainedButtons />
       </div>
     </ThemeProvider>
   );

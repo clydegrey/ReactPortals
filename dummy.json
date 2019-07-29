@@ -3,9 +3,11 @@
   "NumOfPages": 29,
   "Items": [
     {
+      "GeoLocation": { "Latitude": 26.507263, "Longitude": -81.91316 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.5072630%2c-81.9131600&markers=color%3ared%7csize%3amid%7c26.5072630%2c-81.9131600&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "Golisano Children’s Hospital of Southwest Florida",
       "Summary": ["9981 S. HealthPark Drive", " Fort Myers, FL 33908"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/9981+S.+HealthPark+Drive++Fort+Myers+FL+33908",
       "Link1Text": null,
@@ -19,16 +21,14 @@
       "SecondaryButtonUrl": "/find-a-location/golisano-children’s-hospital-of-southwest-florida",
       "SecondaryButtonText": "View Details",
       "Fee": null,
-      "Rating": null,
-      "Position": {
-        "Lat": "26.507851",
-        "Lng": "-81.917747"
-      }
+      "Rating": null
     },
     {
+      "GeoLocation": { "Latitude": 26.6281597, "Longitude": -81.874234 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.6281597%2c-81.8742340&markers=color%3ared%7csize%3amid%7c26.6281597%2c-81.8742340&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "Lee Memorial Hospital",
       "Summary": ["2776 Cleveland Avenue", " Fort Myers, FL 33901"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/2776+Cleveland+Avenue++Fort+Myers+FL+33901",
       "Link1Text": null,
@@ -42,16 +42,14 @@
       "SecondaryButtonUrl": "/find-a-location/lee-memorial-hospital-1",
       "SecondaryButtonText": "View Details",
       "Fee": null,
-      "Rating": null,
-      "Position": {
-        "Lat": "26.600830",
-        "Lng": "-81.871730"
-      }
+      "Rating": null
     },
     {
+      "GeoLocation": { "Latitude": 26.6281597, "Longitude": -81.874234 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.6281597%2c-81.8742340&markers=color%3ared%7csize%3amid%7c26.6281597%2c-81.8742340&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "Rehabilitation Hospital",
       "Summary": ["2776 Cleveland Avenue", " Fort Myers, FL 33901"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/2776+Cleveland+Avenue++Fort+Myers+FL+33901",
       "Link1Text": null,
@@ -68,9 +66,11 @@
       "Rating": null
     },
     {
+      "GeoLocation": { "Latitude": 26.6395106, "Longitude": -81.9436169 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.6395106%2c-81.9436169&markers=color%3ared%7csize%3amid%7c26.6395106%2c-81.9436169&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "Cape Coral Hospital",
       "Summary": ["636 Del Prado Blvd", " Cape Coral, FL 33990"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/636+Del+Prado+Blvd++Cape+Coral+FL+33990",
       "Link1Text": null,
@@ -87,9 +87,11 @@
       "Rating": null
     },
     {
+      "GeoLocation": { "Latitude": 26.507263, "Longitude": -81.91316 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.5072630%2c-81.9131600&markers=color%3ared%7csize%3amid%7c26.5072630%2c-81.9131600&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "HealthPark Medical Center",
       "Summary": ["9981 S. HealthPark Drive", " Fort Myers, FL 33908"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/9981+S.+HealthPark+Drive++Fort+Myers+FL+33908",
       "Link1Text": null,
@@ -106,9 +108,11 @@
       "Rating": null
     },
     {
+      "GeoLocation": { "Latitude": 26.5441804, "Longitude": -81.8526039 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.5441804%2c-81.8526039&markers=color%3ared%7csize%3amid%7c26.5441804%2c-81.8526039&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "Gulf Coast Medical Center",
       "Summary": ["13681 Doctors Way", " Fort Myers, FL 33912"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/13681+Doctors+Way++Fort+Myers+FL+33912",
       "Link1Text": null,
@@ -125,9 +129,11 @@
       "Rating": null
     },
     {
+      "GeoLocation": { "Latitude": 26.5441804, "Longitude": -81.8526039 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.5441804%2c-81.8526039&markers=color%3ared%7csize%3amid%7c26.5441804%2c-81.8526039&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "Cardiovascular",
       "Summary": ["13681 Doctors Way", "Fort Myers, FL 33912"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/13681+Doctors+Way+Fort+Myers+FL+33912",
       "Link1Text": null,
@@ -144,9 +150,11 @@
       "Rating": null
     },
     {
+      "GeoLocation": { "Latitude": 26.6281597, "Longitude": -81.874234 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.6281597%2c-81.8742340&markers=color%3ared%7csize%3amid%7c26.6281597%2c-81.8742340&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "Cardiovascular",
       "Summary": ["2776 Cleveland Avenue", "Fort Myers, FL 33901"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/2776+Cleveland+Avenue+Fort+Myers+FL+33901",
       "Link1Text": null,
@@ -163,9 +171,11 @@
       "Rating": null
     },
     {
+      "GeoLocation": { "Latitude": 26.6395106, "Longitude": -81.9436169 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.6395106%2c-81.9436169&markers=color%3ared%7csize%3amid%7c26.6395106%2c-81.9436169&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "Cardiovascular",
       "Summary": ["636 Del Prado Blvd", "Cape Coral, FL 33990"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/636+Del+Prado+Blvd+Cape+Coral+FL+33990",
       "Link1Text": null,
@@ -182,9 +192,11 @@
       "Rating": null
     },
     {
+      "GeoLocation": { "Latitude": 26.6140396, "Longitude": -81.8053799 },
       "Image": "https://maps.googleapis.com/maps/api/staticmap?center=26.6140396%2c-81.8053799&markers=color%3ared%7csize%3amid%7c26.6140396%2c-81.8053799&zoom=15&size=200x200&key=AIzaSyAWZQu-QpnjtZxwGOccr6B4yDTCdmc03g4",
       "Title": "Cardiovascular",
       "Summary": ["8960 Colonial Center Drive", "Fort Myers, FL 33905"],
+      "Summary2": null,
       "Subtitle": null,
       "Link1Url": "https://www.google.com/maps/dir/8960+Colonial+Center+Drive+Fort+Myers+FL+33905",
       "Link1Text": null,

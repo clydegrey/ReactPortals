@@ -1,0 +1,74 @@
+[
+  {
+    "FilterCodeName": "Type",
+    "FilterDisplayName": "Type",
+    "FilterItems": [
+      {
+        "Name": "Hospitals & Medical Centers12",
+        "Value": "hospitals",
+        "Active": false
+      },
+      {
+        "Name": " Outpatient Services",
+        "Value": "outpatient",
+        "Active": false
+      },
+      {
+        "Name": "Specialty Care Centers",
+        "Value": "specialty",
+        "Active": false
+      },
+      {
+        "Name": "Physician Locations",
+        "Value": "dr_offices",
+        "Active": false
+      },
+      {
+        "Name": "Pediatric Care Locations",
+        "Value": "pediatric",
+        "Active": false
+      },
+      {
+        "Name": "Convenient Care & Emergency",
+        "Value": "convenient",
+        "Active": false
+      },
+      {
+        "Name": "Health and Wellness",
+        "Value": "wellness",
+        "Active": false
+      },
+      {
+        "Name": "Pharmacy",
+        "Value": "pharmacy",
+        "Active": false
+      }
+    ]
+  },
+  {
+    "FilterCodeName": "Services",
+    "FilterDisplayName": "Specialty",
+    "FilterItems": [
+      {
+        "Name": "Family Medicine",
+        "Value": "5ece8dfb-4a93-46cd-bc06-0e324dd1c1e7",
+        "Active": false
+      },
+      {
+        "Name": "General Dentistry",
+        "Value": "40274d79-9a96-48c5-a911-bc4955e68acc",
+        "Active": false
+      },
+      {
+        "Name": "Pediatrics",
+        "Value": "0840dc71-53f1-4e0c-aaf9-f83639624ae6",
+        "Active": false
+      },
+      {
+        "Name": "Pulmonary Disease",
+        "Value": "bf6d8655-6894-43f8-a463-0dd7742ba9a4",
+        "Active": false
+      }
+    ]
+  }
+]

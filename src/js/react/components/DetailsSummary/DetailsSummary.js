@@ -3,11 +3,14 @@ import styled from "@emotion/styled";
 
 const Details = styled.details`
 
-  margin-bottom: 20px;
-  background-color:${props => props.theme.color.grey};
+  /* margin-bottom: 20px; */
+  
   padding:0;
 &.has-border{
   border:2px solid ${props => props.theme.color.grey};
+}
+&.has-background{
+  background-color:${props => props.theme.color.grey};
 }
 &.has-padding{
   >div{
@@ -123,6 +126,7 @@ const DetailsSummary = props => {
   props.border && classNames.push("has-border");
   props.padding && classNames.push("has-padding");
   props.isButton && classNames.push("is-button");
+  props.background && classNames.push("has-background");
   // const windowWidth = props.windowWidth || null;
   // const mediatAttributes = {
   //   open: false,
