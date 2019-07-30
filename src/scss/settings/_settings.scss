@@ -146,12 +146,12 @@ $eat-field-height: 52px;
 // BOX_SIZING RESET
 
 html {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 img {

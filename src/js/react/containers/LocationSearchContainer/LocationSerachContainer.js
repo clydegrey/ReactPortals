@@ -5,16 +5,13 @@ import RemoteSearchBox from "../../components/RemoteSearchBox";
 import RemoteFilters from "../../components/RemoteFilters";
 import SearchBox from "../../components/SearchBox";
 import DetailsSummary from "../../components/DetailsSummary";
-// import DynamicForm from "../../components/DynamicForm";
-// import FormCheckBox from "../../components/DynamicForm/elements/FormCheckBox";
 import CardHasImage from "../../components/CardHasImage";
-import FormCheckBox from "../../components/DynamicForm/elements/FormCheckBox";
 import useWindowSize from "../../hooks/useWindowSize";
-import ContainedButtons from "../../components/MaterialUI/ContainedButtons";
 import GoogleMap from "../../components/GoogleMap";
 import ClearFilters from "../../components/ClearFilters";
 import FilterGroups from "../../components/FilterGroups";
 import ZipcodeUI from "../../components/ZipcodeUI";
+import ShowingResultsMessage from "../../components/ShowingResultsMessage";
 import axios from "axios";
 import ToggleLocationView from "../../components/ToggleLocationView";
 
@@ -22,7 +19,6 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
   const [view, setView] = useState("list");
   const [searchTerm, setSearchTerm] = useState("");
   const [locations, setLocations] = useState([]);
-
   const [filters, setFilters] = useState([]);
   const [activeFilters, setActiveFilters] = useState({});
   const [searchUrl, setSearchUrl] = useState(searchapi);
@@ -33,7 +29,6 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
   const [clientLocation, setClientLocation] = useState("");
   const [errorGeoLocation, setErrorGeolocation] = useState("");
   const [geoEnabled, setGeoEnabled] = useState(false);
-
   const size = useWindowSize();
 
   const onChangeHandler = e => {
@@ -69,7 +64,6 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
     const checked = e.target.checked;
     const val = e.target.value;
     console.log(e.target);
-    console.log(checked, "--", val);
     setActiveFilters(prevState => {
       let set = prevState[FilterCodeName] || new Set();
       if (checked) {
@@ -94,8 +88,8 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
 
   const getFilters = async () => {
     try {
-      const res = await axios.get(filterapi);
-      // const res = await axios.get("/filters.json");
+      // const res = await axios.get(filterapi);
+      const res = await axios.get("/dummyFilters.json");
       const filters = res.data;
       // console.log(filters);
       setFilters(() => filters);
@@ -103,27 +97,6 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
       console.log(error);
     }
   };
-
-  // const createFilterGroups = () => {
-  //   return filters.map(({ FilterCodeName, FilterDisplayName, FilterItems }) => {
-  //     return (
-  //       <DetailsSummary
-  //         border={true}
-  //         padding={true}
-  //         key={FilterCodeName}
-  //         summary={FilterDisplayName}
-  //       >
-  //         <FormCheckBox
-  //           fieldCodeName={FilterCodeName}
-  //           onChangeHandler={checkHandler}
-  //           options={FilterItems}
-  //           legend={FilterDisplayName}
-  //           value={activeFilters[FilterCodeName]}
-  //         />
-  //       </DetailsSummary>
-  //     );
-  //   });
-  // };
 
   const buildSearchUrl = () => {
     let params = [];
@@ -149,15 +122,10 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
 
   const getLocations = async () => {
     try {
-      const res = await axios.get(searchUrl);
-
-      // const res = await axios.get("/dummy.json");
-
+      // const res = await axios.get(searchUrl);
+      const res = await axios.get("/dummy.json");
       console.log(res);
       const locations = res.data;
-      console.log("---------");
-      console.log(locations);
-      console.log("---------");
       setLocations(() => locations);
     } catch (error) {
       console.log(error);
@@ -235,34 +203,15 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
   const updateLocationOptions = e => {
     e.preventDefault();
     setCleanedZipcode(zipcode);
-    // let zip = zipcode.trim();
-    // zip = parseInt(zip);
-    // if (Number.isInteger(zip) || zip === "") {
-    //   setCleanedZipcode(zip);
-    // }
   };
 
   const populateZipFromGeo = () => {
     if (geoLocation) {
-      console.log(geoLocation);
       setZipcode(geoLocation);
     } else {
       postalCodeLookup();
     }
   };
-
-  // const geoLocationButtonUI = () => {
-  //   if (!geoEnabled) {
-  //     return null;
-  //   }
-  //   return errorGeoLocation ? (
-  //     <div>{errorGeoLocation}</div>
-  //   ) : (
-  //     <button type="button" onClick={populateZipFromGeo}>
-  //       use my current location
-  //     </button>
-  //   );
-  // };
 
   const handleZipInput = e => {
     const val = parseInt(e.target.value.trim());
@@ -282,16 +231,9 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
   const getLocationsUI = () => {
     const cards = locations.Items.map(item => (
       <CardHasImage key={item.Address + item.Title} {...item} />
-      // <div key={`${item.address}${item.title}`}>
-      //   <img src={item.Image} alt="" />
-      // </div>
     ));
     return cards;
   };
-
-  // console.log("************");
-  // console.log(locations);
-  // console.log("************");
 
   const placeholder = <span>filter your search</span>;
 
@@ -311,36 +253,6 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
             windowWidth={size.width}
             summary={placeholder}
           >
-            {/* <form onSubmit={updateLocationOptions}>
-              <div>
-                <h3>See doctors in your area:</h3>
-                <div>
-                  <span>Within</span>
-                  <select onChange={e => setRadius(e.target.value)}>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                  </select>
-                  <span>miles of</span>
-                  <input
-                    value={zipcode}
-                    onChange={handleZipInput}
-                    type="text"
-                  />
-                  <button type="submit">go</button>
-                  <div>
-                    {geoLocationButtonUI()}
-                    {/* {errorGeoLocation ? (
-                <div>{errorGeoLocation}</div>
-              ) : (
-                <button type="button" onClick={populateZipFromGeo}>
-                  use my current location
-                </button>
-              )} */}
-            {/* </div>
-                </div>
-              </div> */}
-
             <ZipcodeUI
               errorGeoLocation={errorGeoLocation}
               geoEnabled={geoEnabled}
@@ -350,24 +262,15 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
               populateZipFromGeo={populateZipFromGeo}
               setRadius={setRadius}
             />
-            {/* {filters.length ? createFilterGroups() : null} */}
             <FilterGroups
               checkHandler={checkHandler}
               activeFilters={activeFilters}
               filters={filters}
             />
-            {/* </form> */}
           </DetailsSummary>
         </RemoteFilters>
-        {/* <pre>{locations.item ? "true" : "false"}</pre> */}
         <div>
-          {locations.Items && locations.Items.length && (
-            <div>
-              Showing{" "}
-              <strong>{`${locations.Items.length} of ${locations.NumOfResults}`}</strong>{" "}
-              Locations
-            </div>
-          )}
+          <ShowingResultsMessage data={locations} />
           <ClearFilters
             clearHandler={clearHandler}
             activeFilters={activeFilters}
