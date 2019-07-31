@@ -1,12 +1,16 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "@emotion/styled";
 
 const Container = styled.div`
   position: relative;
   display: inline-block;
+  height: 54px;
+  max-width: 100%;
   input {
-    height: 54px;
+    height: 100%;
     width: 668px;
+    max-width: 100%;
     border: 1px solid #dbdbdb;
     border-radius: 3px;
     background-color: #ffffff;
@@ -23,9 +27,29 @@ const Container = styled.div`
   }
   button {
     position: absolute;
+    top: 0;
+    right: 2px;
+
+    color: ${props => props.theme.color.uiPrimary};
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+
+    /* font-size: 1.4rem; */
     top: 50%;
-    right: 14px;
     transform: translateY(-50%);
+    margin: 0;
+    border-radius: 0 3px 3px 0;
+    &:hover,
+    &:focus {
+      background: ${props => props.theme.color.uiPrimary};
+      color: #fff;
+      outline: none;
+    }
   }
 `;
 
@@ -42,7 +66,9 @@ const SearchBox = props => {
         placeholder="Search for care facilities by location, type, or address"
         onChange={e => props.onChange(e)}
       />
-      <button type="submit">?</button>
+      <button type="submit">
+        <FontAwesomeIcon icon={["far", "search"]} />
+      </button>
     </Container>
   );
 };

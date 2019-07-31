@@ -288,3 +288,6 @@ _Pvt_Extensions
 ## Media folder
 # **/DiabetesCanadaWebsite/*
 # DCMVCSite/DCMVCSite/robots.txt
+
+## npm rc
+.npmrc

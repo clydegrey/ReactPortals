@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Chevron from "../../components/Chevron";
 import styled from "@emotion/styled";
 
 const Details = styled.details`
@@ -25,6 +26,7 @@ const Details = styled.details`
 
   }
 }
+summary{
 .chevron__line1, .chevron__line2 {
   stroke-width: 10;
   stroke-linecap: round;
@@ -56,6 +58,7 @@ const Details = styled.details`
   stroke: ${props => props.theme.color.uiPrimary};
   -webkit-transform: rotate(40deg);
   transform: rotate(40deg);
+}
 }
   &[open]{
     border-color: ${props => props.theme.color.green};
@@ -144,7 +147,7 @@ const DetailsSummary = props => {
     <Details open={open} className={classNames.join(" ")}>
       <summary className={disabled ? "disabled" : null}>
         <div className="summary-icon-container">
-          <span className="icon">
+          {/* <span className="icon">
             <svg
               width="16"
               height="16"
@@ -170,7 +173,9 @@ const DetailsSummary = props => {
                 />
               </g>
             </svg>
-          </span>
+           
+          </span> */}
+          <Chevron />
           <span>{props.summary}</span>
         </div>
       </summary>

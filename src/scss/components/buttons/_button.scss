@@ -9,6 +9,10 @@
   // color: $color-text-dark;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  &:before,
+  &:after {
+    content: none;
+  }
 }
 
 .c-button {
@@ -17,25 +21,47 @@
   color: white;
   border: 2px solid #890c58;
   font-size: rem-calc(14px);
+  &:focus,
+  &:hover {
+    background-color: #5e043a;
+    border-color: #5e043a;
+    color: #fff;
+  }
+
   &__secondary {
     border: 2px solid #890c58;
     color: #890c58;
     background: #fff;
+    &:focus,
+    &:hover {
+      background: #890c58;
+      border-color: #890c58;
+    }
   }
   &__full {
     display: block;
     width: 100%;
   }
-  &__bare {
+  &.c-button__bare {
     background: none;
     padding: 0;
     margin: 0;
     font-weight: normal;
     border: none;
     color: black;
+    text-transform: none;
+    background-color: none;
+    &:hover,
+    &:focus {
+      background-color: none;
+    }
+    &.c-button__disabled {
+      color: #000;
+    }
   }
   &__disabled {
     opacity: 0.3;
+
     pointer-events: none;
   }
   &__isWide {
@@ -44,6 +70,10 @@
   }
   &:focus {
     outline: none;
+  }
+  svg + span {
+    margin-left: 0.5em;
+    display: inline-block;
   }
 
   // // @include text-md();

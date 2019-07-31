@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Card = styled.div`
-  display: flex;
+  display: block;
   border: 1px solid #dbdbdb;
   margin-bottom: 20px;
+  ${props => props.theme.breakpoint.tablet} {
+    display: flex;
+  }
   .media {
     width: 200px;
     flex: 0 0 200px;
@@ -14,22 +18,50 @@ const Card = styled.div`
     }
   }
   .text {
-    padding: 20px 9px;
+    padding: 25px;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
+    ${props => props.theme.breakpoint.mobileonly} {
+      padding: 3%;
+    }
+    ${props => props.theme.breakpoint.tablet} {
+      padding: 20px 9px;
+    }
   }
   .buttons {
+    ${props => props.theme.breakpoint.mobileonly} {
+      padding: 3%;
+    }
     padding: 25px;
-    width: 235px;
+    width: 100%;
     flex-shrink: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    ${props => props.theme.breakpoint.tablet} {
+      flex-direction: column;
+      width: 235px;
+    }
+    div {
+      margin-right: 15px;
+      ${props => props.theme.breakpoint.tablet} {
+        margin-right: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
     a {
+      ${props => props.theme.breakpoint.mobileonly} {
+        padding: 12px 20px;
+      }
       padding: 13px 26px;
-      margin-bottom: 7px;
+
       text-align: center;
       text-decoration: none;
+      ${props => props.theme.breakpoint.tablet} {
+        margin-bottom: 7px;
+      }
     }
   }
 `;
@@ -37,10 +69,12 @@ const Card = styled.div`
 const CardHasImage = props => {
   return (
     <Card>
-      <div className="media">
-        {" "}
-        <img src={props.Image} alt="" />
-      </div>
+      {props.showImage ? (
+        <div className="media">
+          {" "}
+          <img src={props.Image} alt="" />
+        </div>
+      ) : null}
       <div className="text">
         <h3>{props.Title}</h3>
         <div>
@@ -50,16 +84,26 @@ const CardHasImage = props => {
             ))}
           </span>
         </div>
-        <a href="{props.Link1Url}">Get Directions</a>
+        <a
+          className="has-icon"
+          target={props.Link1Target}
+          href={props.Link1Url}
+        >
+          {" "}
+          <FontAwesomeIcon icon="map-marker-alt" />
+          <span>{props.Link1Text}</span>
+        </a>
       </div>
       <div className="buttons">
         {props.PrimaryButtonText && (
           <div>
             <a
               className="c-button c-button__full"
-              href="tel:{props.PrimaryButtonUrl}"
+              href={props.PrimaryButtonUrl}
             >
-              {props.PrimaryButtonText}
+              {" "}
+              <FontAwesomeIcon icon="phone-alt" />
+              <span>{props.PrimaryButtonText}</span>
             </a>
           </div>
         )}
@@ -67,7 +111,7 @@ const CardHasImage = props => {
           <div>
             <a
               className="c-button c-button__full c-button__secondary"
-              href="tel:{props.SecondaryButtonUrl}"
+              href={props.SecondaryButtonUrl}
             >
               {props.SecondaryButtonText}
             </a>

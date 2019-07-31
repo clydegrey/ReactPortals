@@ -5,7 +5,10 @@ import FormCheckBox from "../DynamicForm/elements/FormCheckBox";
 const FilterGroups = ({ filters, checkHandler, activeFilters }) => {
   return filters.map(({ FilterCodeName, FilterDisplayName, FilterItems }) => {
     return (
-      <div style={{ marginBottom: "5px" }} key={FilterCodeName}>
+      <div
+        style={{ marginBottom: "5px", fontSize: "14px" }}
+        key={FilterCodeName}
+      >
         <DetailsSummary
           border={true}
           padding={true}

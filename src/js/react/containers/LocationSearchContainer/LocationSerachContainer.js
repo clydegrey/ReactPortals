@@ -12,10 +12,35 @@ import ClearFilters from "../../components/ClearFilters";
 import FilterGroups from "../../components/FilterGroups";
 import ZipcodeUI from "../../components/ZipcodeUI";
 import ShowingResultsMessage from "../../components/ShowingResultsMessage";
+import FlexRow from "../../components/FlexRow";
+import Spacer from "../../components/FlexRow/Spacer";
 import axios from "axios";
 import ToggleLocationView from "../../components/ToggleLocationView";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+// import { fab } from "@fortawesome/free-brands-svg-icons";
+import {
+  faList,
+  faMapMarkerAlt,
+  faPhoneAlt
+} from "@fortawesome/pro-solid-svg-icons";
+import { faMap, faFilter, faSearch } from "@fortawesome/pro-regular-svg-icons";
+import { faTimesCircle, faChevronDown } from "@fortawesome/pro-light-svg-icons";
 
 const LocationSearchContainer = ({ filterapi, searchapi }) => {
+  console.log(faMap);
+  library.add(
+    faList,
+    faMapMarkerAlt,
+    faPhoneAlt,
+    faMap,
+    faSearch,
+    faFilter,
+    faTimesCircle,
+    faChevronDown
+  );
+
+  console.log(library);
   const [view, setView] = useState("list");
   const [searchTerm, setSearchTerm] = useState("");
   const [locations, setLocations] = useState([]);
@@ -106,15 +131,9 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
       filterTerms.length && params.push(`${key}=${filterTerms}`);
     });
     clientLocation && params.push(clientLocation);
-    searchTerm && params.push(`keywords="${searchTerm}"`);
+    searchTerm && params.push(`keywords=${searchTerm}`);
     let updatedUrl = `${searchapi}?${params.join("&")}`;
-    // if (clientLocation) {
-    //   updatedUrl = `${updatedUrl}&${clientLocation}`;
-    // }
 
-    // if (searchTerm) {
-    //   updatedUrl = ;
-    // }
     setSearchUrl(() => {
       return updatedUrl;
     });
@@ -230,12 +249,22 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
 
   const getLocationsUI = () => {
     const cards = locations.Items.map(item => (
-      <CardHasImage key={item.Address + item.Title} {...item} />
+      <CardHasImage
+        showImage={size.width > 799}
+        key={item.Address + item.Title}
+        {...item}
+      />
     ));
     return cards;
   };
 
-  const placeholder = <span>filter your search</span>;
+  const placeholder = (
+    <span>
+      {" "}
+      <FontAwesomeIcon icon={["far", "filter"]} />
+      <span>filter your search</span>
+    </span>
+  );
 
   return (
     <ThemeProvider theme={LeeHealthTheme}>
@@ -270,18 +299,22 @@ const LocationSearchContainer = ({ filterapi, searchapi }) => {
           </DetailsSummary>
         </RemoteFilters>
         <div>
-          <ShowingResultsMessage data={locations} />
+          <div>
+            <FlexRow>
+              <ShowingResultsMessage data={locations} />
+              <Spacer />
+              <ToggleLocationView view={view} onClickHandler={setView} />
+            </FlexRow>
+          </div>
           <ClearFilters
             clearHandler={clearHandler}
             activeFilters={activeFilters}
           />
-          <ToggleLocationView view={view} onClickHandler={setView} />
         </div>
         {view === "list" &&
           locations.Items &&
           locations.Items.length &&
           getLocationsUI()}
-
         {view === "map" ? (
           <div style={{ width: "100%", height: "750px", position: "relative" }}>
             <GoogleMap markers={locations.Items} />{" "}

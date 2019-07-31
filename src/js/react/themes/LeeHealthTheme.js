@@ -34,5 +34,13 @@ export default {
     focus: {
       backgroundImage: `url("data:image/svg+xml,%0A%3Csvg fill='%23ffffff' width='292.36px' height='292.36px' enable-background='new 0 0 292.362 292.362' version='1.1' viewBox='0 0 292.362 292.362' xml:space='preserve' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m286.94 69.377c-3.614-3.617-7.898-5.424-12.848-5.424h-255.81c-4.952 0-9.233 1.807-12.85 5.424-3.617 3.621-5.424 7.902-5.424 12.851 0 4.948 1.807 9.229 5.424 12.847l127.91 127.91c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428l127.91-127.91c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z'/%3E%3C/svg%3E "), linear-gradient(90deg, #01203d, #01203d 1px, #01203d 0,#01203d 0)`
     }
+  },
+  breakpoint: {
+    max: "@media (min-width: 76em)",
+    desktop: "@media (min-width: 70em)",
+    laptop: "@media (min-width: 64em)",
+    tablet: "@media (min-width: 50em)",
+    phablet: "@media (min-width: 37.5em)",
+    mobileonly: "@media (max-width: 37.5em)"
   }
 };
